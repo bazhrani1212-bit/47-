@@ -21,7 +21,7 @@
       font-size:20px;
       line-height:1.6;
     }
-    .wrap{max-width:1000px; margin:0 auto; padding:18px 14px 30px}
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 14px 30px}
     .top{
       border:1px solid var(--border);
       background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
@@ -29,6 +29,8 @@
       padding:16px;
       display:flex; gap:12px; align-items:center; justify-content:space-between;
       flex-wrap:wrap;
+      position:sticky; top:10px; z-index:20;
+      backdrop-filter: blur(10px);
     }
     .brand{display:flex; gap:12px; align-items:center}
     .logo{
@@ -49,10 +51,12 @@
       font-size:16px;
     }
     button:hover{background:rgba(255,255,255,.10)}
-    .primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
-    .danger{border-color:rgba(255,106,106,.55); background:rgba(255,106,106,.14)}
+    button.primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
+    button.danger{border-color:rgba(255,106,106,.55); background:rgba(255,106,106,.14)}
+
     .grid{display:grid; gap:14px; margin-top:14px}
-    @media(min-width:900px){ .grid{grid-template-columns: 1.1fr .9fr} }
+    @media(min-width:980px){ .grid{grid-template-columns: 1.05fr .95fr} }
+
     .card{
       border:1px solid var(--border);
       background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
@@ -60,8 +64,10 @@
       padding:16px;
     }
     .card h2{margin:0 0 8px; font-size:20px}
+    .muted{color:var(--muted); font-size:14px}
+
     label{display:block; color:var(--muted); font-size:15px; margin-top:10px}
-    input, select{
+    input, select, textarea{
       width:100%;
       padding:12px;
       border-radius:14px;
@@ -72,7 +78,9 @@
       outline:none;
       margin-top:6px;
     }
-    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    textarea{min-height:90px; resize:vertical}
+
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center}
     .notice{
       border:1px dashed rgba(255,255,255,.25);
       background:rgba(255,255,255,.04);
@@ -81,6 +89,7 @@
       color:var(--muted);
       font-size:15px;
     }
+
     .item{
       border:1px solid var(--border);
       background:rgba(0,0,0,.14);
@@ -93,7 +102,21 @@
     }
     .item .t{font-weight:800}
     .item .m{color:var(--muted); font-size:14px}
-    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    .actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    a.linkbtn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:16px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    a.linkbtn:hover{background:rgba(255,255,255,.10)}
+    a.linkbtn.primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
     .kbd{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       font-size:13px;
@@ -105,6 +128,46 @@
       display:inline-block;
       direction:ltr;
       user-select:all;
+      word-break:break-all;
+    }
+
+    /* Rubric */
+    .rubric{display:grid; gap:10px; margin-top:10px}
+    .crit{
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.12);
+      border-radius:16px;
+      padding:12px;
+    }
+    .crit .head{display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap}
+    .crit .name{font-weight:800}
+    .scale{display:grid; gap:8px; margin-top:10px}
+    @media(min-width:980px){ .scale{grid-template-columns: repeat(4, 1fr)} }
+    .lvl{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px;
+      background:rgba(255,255,255,.04);
+      cursor:pointer;
+      user-select:none;
+      min-height:64px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .lvl b{font-size:15px}
+    .lvl span{font-size:13px; color:var(--muted)}
+    .lvl.active{border-color: rgba(106,168,255,.65); background:rgba(106,168,255,.15)}
+    .hr{height:1px; background:var(--border); margin:12px 0}
+    .table{width:100%; border-collapse:collapse; margin-top:10px; font-size:14px}
+    .table th,.table td{border:1px solid var(--border); padding:8px; vertical-align:top}
+    .table th{background:rgba(255,255,255,.06); text-align:right}
+    .tag{font-size:12px; color:var(--muted)}
+    @media print{
+      body{background:white; color:black}
+      .top,.btns{display:none !important}
+      .card{box-shadow:none; background:white; border:1px solid #ccc}
+      .lvl{background:white}
+      .notice{border:1px dashed #999}
+      a.linkbtn{display:none !important}
     }
   </style>
 </head>
@@ -121,72 +184,71 @@
       </div>
       <div class="btns">
         <button id="homeBtn" class="primary" type="button">🏠 الرئيسية</button>
+        <button id="obsBtn" type="button">📝 بطاقة الملاحظة</button>
         <button id="resetBtn" class="danger" type="button" title="يمسح بيانات هذا الجهاز فقط">🧹 مسح بيانات هذا الجهاز</button>
       </div>
     </div>
 
-    <div class="grid" id="app"></div>
+    <div id="app" class="grid"></div>
   </div>
 
 <script>
-  // روابط كانفا (الصف الرابع/الخامس/السادس)
+  // روابط كانفا (صفوف)
   const CANVA = {
     4: "https://36primery-school.my.canva.site/dahajdyfjhk",
     5: "https://36primery-school.my.canva.site/dahajeso-mu",
     6: "https://36primery-school.my.canva.site/dahairgwces"
   };
 
-  // دروس افتراضية (تقدرين تغيرين العناوين لاحقًا)
-  // إذا ما تبين دروس الآن، خليها كما هي وستظهر “دروس عامة”
+  // دروس افتراضية (روابط الدروس الآن = نفس رابط الصف)
+  // إذا أعطيتيني لاحقًا روابط منفصلة لكل درس، أربطها هنا بسهولة.
   const LESSONS = {
     4: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
     5: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
     6: ["درس 1","درس 2","درس 3","درس 4","درس 5"]
   };
 
-  const LS_NAME = "science_platform_visitor_name";
-  const LS_LOG  = "science_platform_visits_log_v1";
+  const LS_NAME = "science_platform_visitor_name_v1";
+  const LS_VIS  = "science_platform_visits_v1";
+  const LS_OBS  = "science_platform_observations_v1";
 
   function esc(s){ return (s??"").toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
   function nowISO(){ return new Date().toISOString(); }
 
-  function getBaseUrl(){
-    // رابط منصتك نفسها (GitHub Pages)
+  function baseUrl(){
     const u = new URL(location.href);
-    // احذف أي باراميتر
+    // حافظ على المسار الحالي (GitHub Pages) لكن احذف الباراميترات
     u.search = "";
-    // خليه على index.html أو المسار الحالي
     return u.toString();
   }
-
-  function makeShareLink(grade, lessonIndex){
-    // رابط خاص من منصتك يفتح كانفا مباشرة
+  function shareLink(grade, lessonIndex){
     const u = new URL(location.href);
     u.searchParams.set("grade", grade);
-    u.searchParams.set("lesson", lessonIndex); // رقم الدرس
+    u.searchParams.set("lesson", lessonIndex);
     return u.toString();
   }
 
-  function saveVisit({name, grade, lessonIndex}){
-    // حفظ محلي (على جهاز الزائرة)
-    const log = JSON.parse(localStorage.getItem(LS_LOG) || "[]");
-    log.unshift({ t: nowISO(), name, grade, lessonIndex });
-    localStorage.setItem(LS_LOG, JSON.stringify(log.slice(0, 200))); // آخر 200 زيارة
+  function saveVisit(name, grade, lessonIndex){
+    const log = JSON.parse(localStorage.getItem(LS_VIS) || "[]");
+    log.unshift({t: nowISO(), name, grade, lessonIndex});
+    localStorage.setItem(LS_VIS, JSON.stringify(log.slice(0, 300)));
   }
 
-  function openCanva(grade){
-    const url = CANVA[grade];
-    if(!url){
-      alert("لم يتم إضافة رابط هذا الصف بعد.");
-      return;
-    }
-    window.open(url, "_blank", "noopener,noreferrer");
+  function renderVisits(){
+    const box = document.getElementById("visitsBox");
+    if(!box) return;
+    const log = JSON.parse(localStorage.getItem(LS_VIS) || "[]");
+    if(!log.length){ box.innerHTML = "لا توجد زيارات مسجلة على هذا الجهاز."; return; }
+    const rows = log.slice(0, 12).map(v=>{
+      const when = new Date(v.t).toLocaleString("ar-SA");
+      return `• ${esc(v.name)} — صف ${esc(v.grade)} — درس ${esc(v.lessonIndex)} — ${esc(when)}`;
+    }).join("<br>");
+    box.innerHTML = rows;
   }
 
-  function openLesson(grade, lessonIndex){
-    // حالياً درس = يفتح نفس رابط كانفا (لأن كانفا site واحد للصف)
-    // لو كان عندك مستقبلاً روابط دروس منفصلة، نغيرها بسهولة.
-    openCanva(grade);
+  // مهم: فتح الروابط عبر <a> لتفادي حظر النوافذ
+  function linkButton(href, label, cls=""){
+    return `<a class="linkbtn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   }
 
   function renderHome(){
@@ -194,9 +256,10 @@
     const app = document.getElementById("app");
     app.innerHTML = `
       <div class="card">
-        <h2>الدخول إلى المنصة</h2>
+        <h2>الدخول</h2>
         <div class="notice">
-          ⚠️ روابط Canva Sites غالبًا لا تفتح داخل الإطار (iframe) بسبب الحماية، لذلك جعلناها تفتح <b>في تبويب جديد</b> لضمان عملها.
+          إذا كانت الروابط لا تفتح سابقًا فذلك بسبب منع المتصفح للنوافذ المنبثقة.
+          هذه النسخة تفتح الروابط كـ <b>روابط مباشرة</b> لضمان عملها.
         </div>
 
         <label>اسم الطالبة / الزائرة</label>
@@ -211,20 +274,28 @@
         </select>
 
         <div class="row">
-          <button class="primary" id="enterBtn" type="button">✅ دخول وعرض الدروس</button>
-          <button id="openGradeBtn" type="button">🔗 فتح رابط الصف مباشرة</button>
+          <button id="enterBtn" class="primary" type="button">✅ عرض الدروس</button>
+          <span class="tag">أو افتحي رابط الصف مباشرة بعد اختيار الصف</span>
         </div>
 
+        <div class="row" id="directLinksRow" style="margin-top:10px"></div>
+
         <div class="notice" style="margin-top:12px">
-          رابط منصتك (للمشاركة): <span class="kbd">${esc(getBaseUrl())}</span>
+          رابط المنصة للمشاركة: <span class="kbd">${esc(baseUrl())}</span>
         </div>
       </div>
 
       <div class="card">
         <h2>آخر الزيارات (على هذا الجهاز)</h2>
-        <div id="visitsBox" class="notice">لا توجد زيارات مسجلة بعد.</div>
+        <div id="visitsBox" class="notice">...</div>
       </div>
     `;
+
+    const directRow = document.getElementById("directLinksRow");
+    directRow.innerHTML =
+      linkButton(CANVA[4], "🔗 فتح تقويم الصف الرابع", "primary") +
+      linkButton(CANVA[5], "🔗 فتح تقويم الصف الخامس", "primary") +
+      linkButton(CANVA[6], "🔗 فتح تقويم الصف السادس", "primary");
 
     document.getElementById("enterBtn").onclick = () => {
       const name = (document.getElementById("nameInput").value || "").trim();
@@ -237,53 +308,29 @@
       renderLessons(name, grade);
     };
 
-    document.getElementById("openGradeBtn").onclick = () => {
-      const name = (document.getElementById("nameInput").value || "").trim();
-      const grade = document.getElementById("gradeSelect").value;
-      if(!name || !grade){
-        alert("اكتبي الاسم واختاري الصف.");
-        return;
-      }
-      localStorage.setItem(LS_NAME, name);
-      saveVisit({name, grade, lessonIndex: 0});
-      openCanva(grade);
-      renderVisits();
-    };
-
     renderVisits();
-  }
-
-  function renderVisits(){
-    const box = document.getElementById("visitsBox");
-    if(!box) return;
-    const log = JSON.parse(localStorage.getItem(LS_LOG) || "[]");
-    if(!log.length){
-      box.innerHTML = "لا توجد زيارات مسجلة بعد.";
-      return;
-    }
-    const rows = log.slice(0, 10).map(v => {
-      const d = new Date(v.t);
-      const when = isNaN(d) ? v.t : d.toLocaleString("ar-SA");
-      return `• ${esc(v.name)} — صف ${esc(v.grade)} — درس ${esc(v.lessonIndex)} — ${esc(when)}`;
-    }).join("<br>");
-    box.innerHTML = rows;
   }
 
   function renderLessons(name, grade){
     const app = document.getElementById("app");
-    const list = (LESSONS[grade] || ["درس عام"]);
-    const items = list.map((title, idx) => {
-      const share = makeShareLink(grade, idx+1);
+    const list = LESSONS[grade] || ["درس عام"];
+    const items = list.map((title, idx)=>{
+      const lessonIndex = idx + 1;
+      const share = shareLink(grade, lessonIndex);
+
+      // حالياً رابط الدرس = رابط الصف (حتى تزوديني بروابط دروس منفصلة)
+      const canvaUrl = CANVA[grade];
+
       return `
         <div class="item">
           <div>
-            <div class="t">${esc(title)}</div>
-            <div class="m">رابط خاص لمشاركة الدرس</div>
+            <div class="t">${esc(title)} (الصف ${esc(grade)})</div>
+            <div class="m">رابط خاص لمشاركة هذا الدرس (يفتح الدرس مباشرة)</div>
             <div class="kbd">${esc(share)}</div>
           </div>
           <div class="actions">
-            <button class="primary" type="button" data-open="${idx+1}">فتح الدرس</button>
-            <button type="button" data-copy="${idx+1}">نسخ الرابط</button>
+            ${linkButton(canvaUrl, "فتح الدرس", "primary")}
+            <button type="button" data-copy="${lessonIndex}">نسخ رابط المشاركة</button>
           </div>
         </div>
       `;
@@ -293,96 +340,278 @@
       <div class="card">
         <h2>مرحبًا ${esc(name)} 👋</h2>
         <div class="notice">
-          الصف المختار: <b>الصف ${esc(grade)}</b><br/>
-          عند الضغط على “فتح الدرس” سيتم فتح تقويم كانفا في تبويب جديد لضمان عمل الرابط.
+          الصف المختار: <b>${esc(grade)}</b> — افتحي الدروس بالأزرار (روابط مباشرة).
         </div>
-        <div class="row" style="margin-top:10px">
-          <button class="primary" id="openAllBtn" type="button">🔗 فتح رابط الصف</button>
+        <div class="row">
+          ${linkButton(CANVA[grade], "🔗 فتح تقويم الصف بالكامل", "primary")}
           <button id="backBtn" type="button">⬅️ رجوع</button>
         </div>
+
         ${items}
+
+        <div class="hr"></div>
+        <div class="notice">
+          ✳️ إذا رغبتِ أن يكون لكل درس رابط كانفا مستقل (بدل رابط واحد للصف)، أرسلي روابط الدروس وسأربطها هنا.
+        </div>
       </div>
 
       <div class="card">
-        <h2>تنبيه</h2>
-        <div class="notice">
-          إذا رغبتِ لاحقًا أن يكون <b>لكل درس رابط كانفا مستقل</b> (بدل رابط واحد للصف)، فقط أعطيني روابط الدروس وسأربطها هنا مباشرة.
-        </div>
+        <h2>بطاقة الملاحظة</h2>
+        <div class="notice">اضغطي زر <b>📝 بطاقة الملاحظة</b> من الأعلى لتعبئة بطاقة تفاعلية بسلالم تقدير وحفظها وطباعةها.</div>
       </div>
     `;
 
-    document.getElementById("openAllBtn").onclick = () => {
-      saveVisit({name, grade, lessonIndex: 0});
-      openCanva(grade);
-      renderVisits();
-    };
-
     document.getElementById("backBtn").onclick = () => renderHome();
 
-    // فتح درس
-    app.querySelectorAll("[data-open]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const lessonIndex = Number(btn.getAttribute("data-open")) || 0;
-        saveVisit({name, grade, lessonIndex});
-        openLesson(grade, lessonIndex);
-        renderVisits();
-      });
-    });
-
-    // نسخ رابط
-    app.querySelectorAll("[data-copy]").forEach(btn => {
-      btn.addEventListener("click", async () => {
+    app.querySelectorAll("[data-copy]").forEach(btn=>{
+      btn.addEventListener("click", async ()=>{
         const lessonIndex = Number(btn.getAttribute("data-copy")) || 0;
-        const share = makeShareLink(grade, lessonIndex);
+        const share = shareLink(grade, lessonIndex);
         try{
           await navigator.clipboard.writeText(share);
           btn.textContent = "✅ تم النسخ";
-          setTimeout(()=> btn.textContent="نسخ الرابط", 900);
+          setTimeout(()=> btn.textContent="نسخ رابط المشاركة", 900);
         }catch(e){
-          alert("لم يتم النسخ تلقائيًا. انسخي يدويًا من الرابط الظاهر.");
+          alert("لم يتم النسخ تلقائيًا. انسخي الرابط يدويًا من السطر الظاهر.");
         }
       });
     });
   }
 
-  // دعم الرابط الخاص: ?grade=6&lesson=2
+  // -------- بطاقة الملاحظة (Rubric) --------
+  const RUBRIC = [
+    { key:"objective", name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن للطالبات"] },
+    { key:"engage", name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
+    { key:"strategy", name:"استراتيجيات التعلم", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
+    { key:"assessment", name:"تقويم أثناء الدرس", desc:["لا يوجد", "محدود", "مستمر", "مستمر + تغذية راجعة"] },
+    { key:"classroom", name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
+  ];
+
+  function loadObs(){
+    return JSON.parse(localStorage.getItem(LS_OBS) || "[]");
+  }
+  function saveObs(list){
+    localStorage.setItem(LS_OBS, JSON.stringify(list));
+  }
+
+  function renderObservation(){
+    const savedName = localStorage.getItem(LS_NAME) || "";
+    const app = document.getElementById("app");
+
+    const today = new Date();
+    const y = today.getFullYear(), m = String(today.getMonth()+1).padStart(2,'0'), d = String(today.getDate()).padStart(2,'0');
+    const todayStr = `${y}-${m}-${d}`;
+
+    const rubricHtml = RUBRIC.map((c, idx)=>`
+      <div class="crit" data-crit="${esc(c.key)}">
+        <div class="head">
+          <div class="name">${idx+1}) ${esc(c.name)}</div>
+          <div class="muted">اختاري مستوى واحد</div>
+        </div>
+        <div class="scale">
+          ${[1,2,3,4].map(lvl=>`
+            <div class="lvl" data-lvl="${lvl}">
+              <b>مستوى ${lvl}</b>
+              <span>${esc(c.desc[lvl-1])}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `).join("");
+
+    app.innerHTML = `
+      <div class="card">
+        <h2>📝 بطاقة ملاحظة تفاعلية</h2>
+        <div class="notice">
+          يتم حفظ البطاقات على هذا الجهاز. يمكنك الطباعة مباشرة.
+        </div>
+
+        <div class="row">
+          <button id="printBtn" type="button">🖨️ طباعة</button>
+          <button id="backHomeBtn" class="primary" type="button">🏠 الرئيسية</button>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="row">
+          <div style="flex:1; min-width:240px">
+            <label>اسم الملاحِظة / المعلمة</label>
+            <input id="obsBy" value="بدرية محمد الزهراني" />
+          </div>
+          <div style="flex:1; min-width:240px">
+            <label>تاريخ الملاحظة</label>
+            <input id="obsDate" type="date" value="${esc(todayStr)}" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1; min-width:240px">
+            <label>اسم المعلمة المُلاحَظة</label>
+            <input id="teacherName" placeholder="مثال: ..." />
+          </div>
+          <div style="flex:1; min-width:240px">
+            <label>الصف/الشعبة</label>
+            <input id="className" placeholder="مثال: سادس/أ" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1; min-width:240px">
+            <label>عنوان الدرس</label>
+            <input id="lessonTitle" placeholder="مثال: ..." />
+          </div>
+          <div style="flex:1; min-width:240px">
+            <label>اسم الطالبة (اختياري)</label>
+            <input id="studentName" value="${esc(savedName)}" />
+          </div>
+        </div>
+
+        <div class="rubric" id="rubricBox">${rubricHtml}</div>
+
+        <label>ملاحظات نوعية</label>
+        <textarea id="notes" placeholder="اكتبي الملاحظات..."></textarea>
+
+        <div class="row">
+          <button id="saveObsBtn" class="primary" type="button">💾 حفظ البطاقة</button>
+          <button id="clearObsBtn" type="button">🧽 مسح الاختيارات</button>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h2>سجل البطاقات (على هذا الجهاز)</h2>
+        <div id="obsList" class="notice">...</div>
+      </div>
+    `;
+
+    // تفعيل اختيار المستويات
+    const selections = {}; // key => level
+    document.querySelectorAll(".crit").forEach(crit=>{
+      const key = crit.getAttribute("data-crit");
+      crit.querySelectorAll(".lvl").forEach(box=>{
+        box.addEventListener("click", ()=>{
+          const lvl = Number(box.getAttribute("data-lvl"));
+          selections[key] = lvl;
+          // reset visuals
+          crit.querySelectorAll(".lvl").forEach(x=>x.classList.remove("active"));
+          box.classList.add("active");
+        });
+      });
+    });
+
+    document.getElementById("clearObsBtn").onclick = ()=>{
+      Object.keys(selections).forEach(k=>delete selections[k]);
+      document.querySelectorAll(".lvl").forEach(x=>x.classList.remove("active"));
+      document.getElementById("notes").value = "";
+    };
+
+    document.getElementById("saveObsBtn").onclick = ()=>{
+      const record = {
+        id: crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        t: nowISO(),
+        obsBy: (document.getElementById("obsBy").value||"").trim(),
+        date: (document.getElementById("obsDate").value||"").trim(),
+        teacherName: (document.getElementById("teacherName").value||"").trim(),
+        className: (document.getElementById("className").value||"").trim(),
+        lessonTitle: (document.getElementById("lessonTitle").value||"").trim(),
+        studentName: (document.getElementById("studentName").value||"").trim(),
+        levels: {...selections},
+        notes: (document.getElementById("notes").value||"").trim(),
+      };
+
+      // تحقق بسيط
+      const picked = Object.keys(record.levels).length;
+      if(!record.teacherName || !record.className || !record.lessonTitle){
+        alert("فضلاً: اكملي (اسم المعلمة/الصف/عنوان الدرس).");
+        return;
+      }
+      if(picked < 3){
+        alert("فضلاً: اختاري مستويات سلالم التقدير (على الأقل 3 معايير).");
+        return;
+      }
+
+      const list = loadObs();
+      list.unshift(record);
+      saveObs(list.slice(0, 200));
+      alert("تم حفظ البطاقة ✅");
+      renderObsList();
+    };
+
+    document.getElementById("printBtn").onclick = ()=> window.print();
+    document.getElementById("backHomeBtn").onclick = ()=> renderHome();
+
+    function renderObsList(){
+      const box = document.getElementById("obsList");
+      const list = loadObs();
+      if(!list.length){
+        box.innerHTML = "لا توجد بطاقات محفوظة بعد.";
+        return;
+      }
+
+      const rows = list.slice(0, 12).map(r=>{
+        const when = new Date(r.t).toLocaleString("ar-SA");
+        const score = RUBRIC.reduce((acc,c)=> acc + (r.levels?.[c.key]||0), 0);
+        const max = RUBRIC.length * 4;
+        return `
+          <div style="margin-bottom:10px">
+            <b>${esc(r.teacherName)}</b> — ${esc(r.className)} — ${esc(r.lessonTitle)}<br>
+            <span class="tag">${esc(r.date)} — ${esc(when)} — المجموع: ${score}/${max}</span><br>
+            <button type="button" data-del="${esc(r.id)}" style="margin-top:6px">🗑️ حذف</button>
+          </div>
+        `;
+      }).join("<div class='hr'></div>");
+
+      box.innerHTML = rows;
+
+      box.querySelectorAll("[data-del]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = btn.getAttribute("data-del");
+          const list = loadObs().filter(x=>x.id !== id);
+          saveObs(list);
+          renderObsList();
+        });
+      });
+    }
+
+    renderObsList();
+  }
+
+  // دعم رابط مشاركة الدرس: ?grade=6&lesson=2
   function handleDeepLink(){
     const p = new URLSearchParams(location.search);
     const grade = p.get("grade");
     const lesson = Number(p.get("lesson") || "0");
+
     if(!grade) return false;
 
     const name = (localStorage.getItem(LS_NAME) || "").trim();
-    // لو وصلتهم رابط خاص وما كتبوا اسمهم قبل، نرجعهم للصفحة مع تذكير سريع
+    // إذا لم يُكتب الاسم من قبل: افتح الرئيسية
     if(!name){
       renderHome();
       setTimeout(()=> alert("اكتبي اسمك أولاً ثم افتحي الدرس."), 50);
       return true;
     }
 
-    // نسجل الزيارة ونفتح كانفا
-    saveVisit({name, grade, lessonIndex: lesson || 0});
-    openLesson(grade, lesson || 0);
-
-    // نعرض صفحة الدروس أيضًا
+    saveVisit(name, grade, lesson || 0);
+    // نعرض صفحة الدروس (والفتح يكون عبر زر الرابط المباشر)
     renderLessons(name, grade);
     return true;
   }
 
   // أزرار أعلى الصفحة
-  document.getElementById("homeBtn").onclick = () => renderHome();
-  document.getElementById("resetBtn").onclick = () => {
+  document.getElementById("homeBtn").onclick = ()=> renderHome();
+  document.getElementById("obsBtn").onclick  = ()=> renderObservation();
+  document.getElementById("resetBtn").onclick = ()=>{
     if(confirm("هل تريدين مسح بيانات هذا الجهاز فقط؟")){
       localStorage.removeItem(LS_NAME);
-      localStorage.removeItem(LS_LOG);
+      localStorage.removeItem(LS_VIS);
+      localStorage.removeItem(LS_OBS);
       renderHome();
     }
   };
 
   // تشغيل
-  if(!handleDeepLink()){
-    renderHome();
-  }
+  if(!handleDeepLink()) renderHome();
 </script>
 
 </body>
