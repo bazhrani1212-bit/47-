@@ -3,113 +3,386 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- اسم الصفحة في التبويب -->
-  <title>منصة التقويم لمادة العلوم - بدرية محمد الزهراني</title>
-
+  <title>منصة التقويم لمادة العلوم - إعداد المعلمة بدرية محمد الزهراني</title>
   <style>
+    :root{
+      --bg:#0b1220; --card:#101a33; --text:#eef4ff; --muted:#a7b4d6;
+      --accent:#6aa8ff; --danger:#ff6a6a; --border:rgba(255,255,255,.14);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      background:#0b1220;
-      color:white;
-      font-family:Tajawal, Arial;
+      background:radial-gradient(1000px 700px at 70% 10%, rgba(106,168,255,.18), transparent 60%),
+                 radial-gradient(900px 650px at 15% 90%, rgba(255,106,106,.12), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
       font-size:20px;
+      line-height:1.6;
     }
+    .wrap{max-width:1000px; margin:0 auto; padding:18px 14px 30px}
     .top{
-      background:#101a33;
-      padding:18px;
-      text-align:center;
-      border-bottom:2px solid #6aa8ff;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      padding:16px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
     }
-    .top h1{margin:0;font-size:28px}
-    .top h2{margin:6px 0 0;font-size:18px;color:#a7b4d6}
-
-    .container{max-width:900px;margin:auto;padding:20px}
-
-    .card{
-      background:#101a33;
-      padding:18px;
-      border-radius:14px;
-      margin-bottom:16px;
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background:conic-gradient(from 210deg, var(--accent), #8dffb0, #ffd48a, var(--accent));
+      box-shadow:0 12px 30px rgba(106,168,255,.22);
     }
-
-    input,select,button{
-      padding:12px;
-      border-radius:10px;
-      border:none;
-      margin-top:8px;
-      font-size:18px;
-      width:100%;
-    }
-
+    h1{margin:0; font-size:22px}
+    .sub{margin:3px 0 0; color:var(--muted); font-size:14px}
+    .btns{display:flex; gap:10px; flex-wrap:wrap}
     button{
-      background:#6aa8ff;
-      color:white;
-      cursor:pointer;
-    }
-
-    iframe{
-      width:100%;
-      height:80vh;
-      border:none;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
       border-radius:14px;
-      margin-top:12px;
+      cursor:pointer;
+      font-size:16px;
+    }
+    button:hover{background:rgba(255,255,255,.10)}
+    .primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
+    .danger{border-color:rgba(255,106,106,.55); background:rgba(255,106,106,.14)}
+    .grid{display:grid; gap:14px; margin-top:14px}
+    @media(min-width:900px){ .grid{grid-template-columns: 1.1fr .9fr} }
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card h2{margin:0 0 8px; font-size:20px}
+    label{display:block; color:var(--muted); font-size:15px; margin-top:10px}
+    input, select{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      font-size:18px;
+      outline:none;
+      margin-top:6px;
+    }
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .notice{
+      border:1px dashed rgba(255,255,255,.25);
+      background:rgba(255,255,255,.04);
+      padding:12px;
+      border-radius:16px;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .item{
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.14);
+      border-radius:16px;
+      padding:12px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+    .item .t{font-weight:800}
+    .item .m{color:var(--muted); font-size:14px}
+    .actions{display:flex; gap:8px; flex-wrap:wrap}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:13px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      display:inline-block;
+      direction:ltr;
+      user-select:all;
     }
   </style>
 </head>
 
 <body>
-
-  <div class="top">
-    <h1>منصة التقويم لمادة العلوم</h1>
-    <h2>إعداد المعلمة بدرية محمد الزهراني</h2>
-  </div>
-
-  <div class="container">
-
-    <div class="card">
-      <label>اسم الطالبة</label>
-      <input id="student" placeholder="اكتبي اسمك هنا">
-
-      <label>اختاري الصف</label>
-      <select id="grade">
-        <option value="">-- اختاري --</option>
-        <option value="4">الصف الرابع</option>
-        <option value="5">الصف الخامس</option>
-        <option value="6">الصف السادس</option>
-      </select>
-
-      <button onclick="enter()">دخول</button>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>منصة التقويم لمادة العلوم</h1>
+          <div class="sub">إعداد المعلمة بدرية محمد الزهراني</div>
+        </div>
+      </div>
+      <div class="btns">
+        <button id="homeBtn" class="primary" type="button">🏠 الرئيسية</button>
+        <button id="resetBtn" class="danger" type="button" title="يمسح بيانات هذا الجهاز فقط">🧹 مسح بيانات هذا الجهاز</button>
+      </div>
     </div>
 
-    <div id="lesson"></div>
-
+    <div class="grid" id="app"></div>
   </div>
 
 <script>
-const links={
-  4:"https://36primery-school.my.canva.site/dahajdyfjhk",
-  5:"https://36primery-school.my.canva.site/dahajeso-mu",
-  6:"https://36primery-school.my.canva.site/dahairgwces"
-}
+  // روابط كانفا (الصف الرابع/الخامس/السادس)
+  const CANVA = {
+    4: "https://36primery-school.my.canva.site/dahajdyfjhk",
+    5: "https://36primery-school.my.canva.site/dahajeso-mu",
+    6: "https://36primery-school.my.canva.site/dahairgwces"
+  };
 
-function enter(){
-  const name=document.getElementById("student").value.trim()
-  const grade=document.getElementById("grade").value
+  // دروس افتراضية (تقدرين تغيرين العناوين لاحقًا)
+  // إذا ما تبين دروس الآن، خليها كما هي وستظهر “دروس عامة”
+  const LESSONS = {
+    4: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
+    5: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
+    6: ["درس 1","درس 2","درس 3","درس 4","درس 5"]
+  };
 
-  if(!name||!grade){
-    alert("اكتبي اسمك واختاري الصف")
-    return
+  const LS_NAME = "science_platform_visitor_name";
+  const LS_LOG  = "science_platform_visits_log_v1";
+
+  function esc(s){ return (s??"").toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+  function nowISO(){ return new Date().toISOString(); }
+
+  function getBaseUrl(){
+    // رابط منصتك نفسها (GitHub Pages)
+    const u = new URL(location.href);
+    // احذف أي باراميتر
+    u.search = "";
+    // خليه على index.html أو المسار الحالي
+    return u.toString();
   }
 
-  localStorage.setItem("science_student",name)
+  function makeShareLink(grade, lessonIndex){
+    // رابط خاص من منصتك يفتح كانفا مباشرة
+    const u = new URL(location.href);
+    u.searchParams.set("grade", grade);
+    u.searchParams.set("lesson", lessonIndex); // رقم الدرس
+    return u.toString();
+  }
 
-  document.getElementById("lesson").innerHTML=
-  `<div class="card">
-     <b>أهلاً ${name}</b>
-     <iframe src="${links[grade]}"></iframe>
-   </div>`
-}
+  function saveVisit({name, grade, lessonIndex}){
+    // حفظ محلي (على جهاز الزائرة)
+    const log = JSON.parse(localStorage.getItem(LS_LOG) || "[]");
+    log.unshift({ t: nowISO(), name, grade, lessonIndex });
+    localStorage.setItem(LS_LOG, JSON.stringify(log.slice(0, 200))); // آخر 200 زيارة
+  }
+
+  function openCanva(grade){
+    const url = CANVA[grade];
+    if(!url){
+      alert("لم يتم إضافة رابط هذا الصف بعد.");
+      return;
+    }
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  function openLesson(grade, lessonIndex){
+    // حالياً درس = يفتح نفس رابط كانفا (لأن كانفا site واحد للصف)
+    // لو كان عندك مستقبلاً روابط دروس منفصلة، نغيرها بسهولة.
+    openCanva(grade);
+  }
+
+  function renderHome(){
+    const savedName = localStorage.getItem(LS_NAME) || "";
+    const app = document.getElementById("app");
+    app.innerHTML = `
+      <div class="card">
+        <h2>الدخول إلى المنصة</h2>
+        <div class="notice">
+          ⚠️ روابط Canva Sites غالبًا لا تفتح داخل الإطار (iframe) بسبب الحماية، لذلك جعلناها تفتح <b>في تبويب جديد</b> لضمان عملها.
+        </div>
+
+        <label>اسم الطالبة / الزائرة</label>
+        <input id="nameInput" placeholder="اكتبي الاسم هنا" value="${esc(savedName)}"/>
+
+        <label>اختاري الصف</label>
+        <select id="gradeSelect">
+          <option value="">-- اختاري --</option>
+          <option value="4">الصف الرابع</option>
+          <option value="5">الصف الخامس</option>
+          <option value="6">الصف السادس</option>
+        </select>
+
+        <div class="row">
+          <button class="primary" id="enterBtn" type="button">✅ دخول وعرض الدروس</button>
+          <button id="openGradeBtn" type="button">🔗 فتح رابط الصف مباشرة</button>
+        </div>
+
+        <div class="notice" style="margin-top:12px">
+          رابط منصتك (للمشاركة): <span class="kbd">${esc(getBaseUrl())}</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>آخر الزيارات (على هذا الجهاز)</h2>
+        <div id="visitsBox" class="notice">لا توجد زيارات مسجلة بعد.</div>
+      </div>
+    `;
+
+    document.getElementById("enterBtn").onclick = () => {
+      const name = (document.getElementById("nameInput").value || "").trim();
+      const grade = document.getElementById("gradeSelect").value;
+      if(!name || !grade){
+        alert("اكتبي الاسم واختاري الصف.");
+        return;
+      }
+      localStorage.setItem(LS_NAME, name);
+      renderLessons(name, grade);
+    };
+
+    document.getElementById("openGradeBtn").onclick = () => {
+      const name = (document.getElementById("nameInput").value || "").trim();
+      const grade = document.getElementById("gradeSelect").value;
+      if(!name || !grade){
+        alert("اكتبي الاسم واختاري الصف.");
+        return;
+      }
+      localStorage.setItem(LS_NAME, name);
+      saveVisit({name, grade, lessonIndex: 0});
+      openCanva(grade);
+      renderVisits();
+    };
+
+    renderVisits();
+  }
+
+  function renderVisits(){
+    const box = document.getElementById("visitsBox");
+    if(!box) return;
+    const log = JSON.parse(localStorage.getItem(LS_LOG) || "[]");
+    if(!log.length){
+      box.innerHTML = "لا توجد زيارات مسجلة بعد.";
+      return;
+    }
+    const rows = log.slice(0, 10).map(v => {
+      const d = new Date(v.t);
+      const when = isNaN(d) ? v.t : d.toLocaleString("ar-SA");
+      return `• ${esc(v.name)} — صف ${esc(v.grade)} — درس ${esc(v.lessonIndex)} — ${esc(when)}`;
+    }).join("<br>");
+    box.innerHTML = rows;
+  }
+
+  function renderLessons(name, grade){
+    const app = document.getElementById("app");
+    const list = (LESSONS[grade] || ["درس عام"]);
+    const items = list.map((title, idx) => {
+      const share = makeShareLink(grade, idx+1);
+      return `
+        <div class="item">
+          <div>
+            <div class="t">${esc(title)}</div>
+            <div class="m">رابط خاص لمشاركة الدرس</div>
+            <div class="kbd">${esc(share)}</div>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" data-open="${idx+1}">فتح الدرس</button>
+            <button type="button" data-copy="${idx+1}">نسخ الرابط</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    app.innerHTML = `
+      <div class="card">
+        <h2>مرحبًا ${esc(name)} 👋</h2>
+        <div class="notice">
+          الصف المختار: <b>الصف ${esc(grade)}</b><br/>
+          عند الضغط على “فتح الدرس” سيتم فتح تقويم كانفا في تبويب جديد لضمان عمل الرابط.
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="primary" id="openAllBtn" type="button">🔗 فتح رابط الصف</button>
+          <button id="backBtn" type="button">⬅️ رجوع</button>
+        </div>
+        ${items}
+      </div>
+
+      <div class="card">
+        <h2>تنبيه</h2>
+        <div class="notice">
+          إذا رغبتِ لاحقًا أن يكون <b>لكل درس رابط كانفا مستقل</b> (بدل رابط واحد للصف)، فقط أعطيني روابط الدروس وسأربطها هنا مباشرة.
+        </div>
+      </div>
+    `;
+
+    document.getElementById("openAllBtn").onclick = () => {
+      saveVisit({name, grade, lessonIndex: 0});
+      openCanva(grade);
+      renderVisits();
+    };
+
+    document.getElementById("backBtn").onclick = () => renderHome();
+
+    // فتح درس
+    app.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lessonIndex = Number(btn.getAttribute("data-open")) || 0;
+        saveVisit({name, grade, lessonIndex});
+        openLesson(grade, lessonIndex);
+        renderVisits();
+      });
+    });
+
+    // نسخ رابط
+    app.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const lessonIndex = Number(btn.getAttribute("data-copy")) || 0;
+        const share = makeShareLink(grade, lessonIndex);
+        try{
+          await navigator.clipboard.writeText(share);
+          btn.textContent = "✅ تم النسخ";
+          setTimeout(()=> btn.textContent="نسخ الرابط", 900);
+        }catch(e){
+          alert("لم يتم النسخ تلقائيًا. انسخي يدويًا من الرابط الظاهر.");
+        }
+      });
+    });
+  }
+
+  // دعم الرابط الخاص: ?grade=6&lesson=2
+  function handleDeepLink(){
+    const p = new URLSearchParams(location.search);
+    const grade = p.get("grade");
+    const lesson = Number(p.get("lesson") || "0");
+    if(!grade) return false;
+
+    const name = (localStorage.getItem(LS_NAME) || "").trim();
+    // لو وصلتهم رابط خاص وما كتبوا اسمهم قبل، نرجعهم للصفحة مع تذكير سريع
+    if(!name){
+      renderHome();
+      setTimeout(()=> alert("اكتبي اسمك أولاً ثم افتحي الدرس."), 50);
+      return true;
+    }
+
+    // نسجل الزيارة ونفتح كانفا
+    saveVisit({name, grade, lessonIndex: lesson || 0});
+    openLesson(grade, lesson || 0);
+
+    // نعرض صفحة الدروس أيضًا
+    renderLessons(name, grade);
+    return true;
+  }
+
+  // أزرار أعلى الصفحة
+  document.getElementById("homeBtn").onclick = () => renderHome();
+  document.getElementById("resetBtn").onclick = () => {
+    if(confirm("هل تريدين مسح بيانات هذا الجهاز فقط؟")){
+      localStorage.removeItem(LS_NAME);
+      localStorage.removeItem(LS_LOG);
+      renderHome();
+    }
+  };
+
+  // تشغيل
+  if(!handleDeepLink()){
+    renderHome();
+  }
 </script>
 
 </body>
