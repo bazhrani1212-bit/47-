@@ -9,25 +9,34 @@
       --bg:#ffffff; --text:#0f172a; --muted:#475569;
       --border:#d1d5db; --green:#0f7a3a; --green2:#16a34a;
       --soft:#f8fafc; --shadow: 0 10px 24px rgba(15,23,42,.08);
-      --radius:14px; --max: 900px;
+      --radius:14px; --max: 920px;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);
+    body{
+      margin:0;background:var(--bg);color:var(--text);
       font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
-      font-size:18px;line-height:1.6}
+      font-size:18px;line-height:1.6;
+    }
     .page{max-width:var(--max);margin:0 auto;padding:20px 14px 40px}
     .header{
-      border:1px solid var(--border);border-top:6px solid var(--green);
-      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
-      padding:16px;text-align:center
+      border:1px solid var(--border);
+      border-top:6px solid var(--green);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:16px;
+      text-align:center;
     }
     .header h1{margin:0;font-size:22px}
     .header .sub{margin:6px 0 0;color:var(--muted);font-size:14px}
     .nav{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .btn{
-      border:1px solid var(--border);background:#fff;color:var(--text);
-      padding:10px 14px;border-radius:12px;cursor:pointer;font-size:15px;
-      box-shadow:0 4px 10px rgba(15,23,42,.05);text-decoration:none;display:inline-flex;gap:8px;align-items:center
+      border:1px solid var(--border);
+      background:#fff;color:var(--text);
+      padding:10px 14px;border-radius:12px;
+      cursor:pointer;font-size:15px;
+      box-shadow:0 4px 10px rgba(15,23,42,.05);
+      text-decoration:none;display:inline-flex;gap:8px;align-items:center;
     }
     .btn:hover{background:var(--soft)}
     .btn.primary{border-color:rgba(15,122,58,.35);background:rgba(15,122,58,.08)}
@@ -35,34 +44,44 @@
     .btn.danger{border-color:rgba(220,38,38,.35);background:rgba(220,38,38,.06);color:#7f1d1d}
 
     .card{
-      margin-top:14px;border:1px solid var(--border);border-left:6px solid var(--green);
-      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);padding:16px
+      margin-top:14px;border:1px solid var(--border);
+      border-left:6px solid var(--green);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:16px;
     }
     .card h2{margin:0 0 10px;font-size:18px}
     .muted{color:var(--muted);font-size:14px}
+
     label{display:block;margin-top:10px;color:var(--muted);font-size:14px}
     input,select,textarea{
-      width:100%;margin-top:6px;padding:12px;border-radius:12px;
-      border:1px solid var(--border);background:#fff;font-size:16px;outline:none
+      width:100%;margin-top:6px;padding:12px;
+      border-radius:12px;border:1px solid var(--border);
+      background:#fff;font-size:16px;outline:none;
     }
     input:focus,select:focus,textarea:focus{
-      border-color:rgba(15,122,58,.55);box-shadow:0 0 0 4px rgba(15,122,58,.10)
+      border-color:rgba(15,122,58,.55);
+      box-shadow:0 0 0 4px rgba(15,122,58,.10);
     }
     textarea{min-height:90px;resize:vertical}
     .row{display:flex;gap:10px;flex-wrap:wrap}
     .col{flex:1;min-width:240px}
-
     .notice{
-      margin-top:10px;background:#f0fdf4;border:1px dashed rgba(22,163,74,.45);
-      color:#14532d;border-radius:12px;padding:10px 12px;font-size:14px
+      margin-top:10px;background:#f0fdf4;
+      border:1px dashed rgba(22,163,74,.45);
+      color:#14532d;border-radius:12px;
+      padding:10px 12px;font-size:14px;
     }
     .pill{
       display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
-      border:1px solid rgba(15,122,58,.25);background:rgba(15,122,58,.06);color:#14532d;margin-inline-start:6px
+      border:1px solid rgba(15,122,58,.25);
+      background:rgba(15,122,58,.06);color:#14532d;
+      margin-inline-start:6px;
     }
     .hr{height:1px;background:var(--border);margin:12px 0}
 
-    /* Rubric */
+    /* Student Rubric */
     .rubric{display:grid;gap:10px;margin-top:12px}
     .crit{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
     .critHead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
@@ -71,13 +90,15 @@
     @media(min-width:760px){.levels{grid-template-columns:repeat(4,1fr)}}
     .lvl{
       border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff;
-      cursor:pointer;user-select:none;min-height:78px;display:flex;flex-direction:column;gap:6px
+      cursor:pointer;user-select:none;min-height:78px;
+      display:flex;flex-direction:column;gap:6px;
     }
     .lvl b{font-size:14px}
     .lvl span{font-size:12px;color:var(--muted)}
     .lvl.active{
-      border-color:rgba(22,163,74,.70);background:rgba(22,163,74,.08);
-      box-shadow:0 0 0 4px rgba(22,163,74,.10)
+      border-color:rgba(22,163,74,.70);
+      background:rgba(22,163,74,.08);
+      box-shadow:0 0 0 4px rgba(22,163,74,.10);
     }
 
     /* list */
@@ -105,8 +126,8 @@
       <h1>منصة التقويم لمادة العلوم</h1>
       <div class="sub">إعداد المعلمة بدرية محمد الزهراني</div>
       <div class="nav">
-        <button class="btn primary" id="goForm">📝 بطاقة الملاحظة</button>
-        <button class="btn" id="goList">📚 استعراض البطاقات</button>
+        <button class="btn primary" id="goForm">📝 بطاقة تقويم الطالبة</button>
+        <button class="btn" id="goList">📚 استعراض بطاقات الطالبات</button>
         <button class="btn danger" id="clearLocal" title="يمسح بيانات هذا الجهاز فقط">🧹 مسح بيانات الجهاز</button>
       </div>
     </div>
@@ -122,23 +143,25 @@
     6: "https://36primery-school.my.canva.site/dahairgwces"
   };
 
-  const LS_GRADE = "science_obs_grade_v2";
-  const LS_OBS   = "science_observations_v3";
+  const LS_GRADE = "science_student_grade_v1";
+  const LS_STU_EVAL = "science_student_evals_v1";
 
+  // سلالم تقدير تقويم الطالبة (4 مستويات)
   const RUBRIC = [
-    { key:"objective",  name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن"] },
-    { key:"engage",     name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
-    { key:"strategy",   name:"استراتيجيات التدريس", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
-    { key:"assessment", name:"التقويم والتغذية الراجعة", desc:["لا يوجد", "محدود", "مستمر", "مستمر + فاعل"] },
-    { key:"classroom",  name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
+    { key:"understand", name:"الفهم والاستيعاب", desc:["ضعيف", "مقبول", "جيد", "ممتاز"] },
+    { key:"apply",      name:"التطبيق", desc:["ضعيف", "مقبول", "جيد", "ممتاز"] },
+    { key:"participate",name:"المشاركة", desc:["ضعيفة", "مقبولة", "جيدة", "متميزة"] },
+    { key:"skills",     name:"المهارات العلمية", desc:["ضعيفة", "مقبولة", "جيدة", "ممتازة"] },
+    { key:"behavior",   name:"الانضباط والسلوك", desc:["يحتاج دعم", "مقبول", "جيد", "متميز"] },
   ];
 
   const view = document.getElementById("view");
+
   function esc(s){ return (s??"").toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
   function nowISO(){ return new Date().toISOString(); }
   function uid(){ return (crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
-  function loadObs(){ return JSON.parse(localStorage.getItem(LS_OBS) || "[]"); }
-  function saveObs(list){ localStorage.setItem(LS_OBS, JSON.stringify(list)); }
+  function loadEvals(){ return JSON.parse(localStorage.getItem(LS_STU_EVAL) || "[]"); }
+  function saveEvals(list){ localStorage.setItem(LS_STU_EVAL, JSON.stringify(list)); }
   function getToday(){
     const t=new Date(); const y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
     return `${y}-${m}-${d}`;
@@ -151,7 +174,7 @@
     const gtxt = grade ? `الصف ${grade}` : "اختاري الصف أولاً";
     return `
       <div class="notice openLinks">
-        <b>روابط التقويم (${esc(gtxt)})</b><br>
+        <b>روابط تقويم العلوم (${esc(gtxt)})</b><br>
         ${grade ? `
           <a class="btn green" href="${esc(url)}" target="_blank" rel="noopener noreferrer">🔗 فتح تقويم الصف ${esc(grade)} (Canva)</a>
           <div class="muted" style="margin-top:6px">يفتح في تبويب جديد لضمان عمل الرابط.</div>
@@ -164,7 +187,7 @@
 
   function renderForm(editId=null){
     const gradeSaved = localStorage.getItem(LS_GRADE) || "";
-    const list = loadObs();
+    const list = loadEvals();
     const existing = editId ? list.find(x=>x.id===editId) : null;
 
     const v = existing || {
@@ -174,8 +197,9 @@
       grade: gradeSaved,
       date: getToday(),
       lessonTitle: "",
-      observerName: "بدرية محمد الزهراني",
-      teacherObserved: "",
+      studentName: "",
+      studentClass: "",
+      evaluatorName: "بدرية محمد الزهراني",
       notes: "",
       levels: {}
     };
@@ -202,7 +226,7 @@
 
     view.innerHTML = `
       <div class="card">
-        <h2>📝 بطاقة الملاحظة ${editId ? '<span class="pill">تعديل</span>' : ""}</h2>
+        <h2>📝 بطاقة تقويم الطالبة ${editId ? '<span class="pill">تعديل</span>' : ""}</h2>
 
         <div class="row">
           <div class="col">
@@ -215,7 +239,7 @@
             </select>
           </div>
           <div class="col">
-            <label>تاريخ الملاحظة</label>
+            <label>تاريخ التقويم</label>
             <input id="date" type="date" value="${esc(v.date)}" />
           </div>
         </div>
@@ -224,23 +248,23 @@
 
         <div class="row">
           <div class="col">
-            <label>عنوان الدرس</label>
-            <input id="lessonTitle" placeholder="مثال: حالات المادة" value="${esc(v.lessonTitle)}" />
+            <label>اسم الطالبة</label>
+            <input id="studentName" placeholder="اكتبي اسم الطالبة" value="${esc(v.studentName)}" />
           </div>
           <div class="col">
-            <label>اسم الملاحِظة</label>
-            <input id="observerName" value="${esc(v.observerName)}" />
+            <label>الشعبة / الفصل</label>
+            <input id="studentClass" placeholder="مثال: رابع/ب" value="${esc(v.studentClass)}" />
           </div>
         </div>
 
         <div class="row">
           <div class="col">
-            <label>اسم المعلمة المُلاحظة (اختياري)</label>
-            <input id="teacherObserved" placeholder="اختياري" value="${esc(v.teacherObserved)}" />
+            <label>عنوان الدرس</label>
+            <input id="lessonTitle" placeholder="مثال: حالات المادة" value="${esc(v.lessonTitle)}" />
           </div>
           <div class="col">
-            <label>حالة البطاقة</label>
-            <input value="${editId ? "تحديث بطاقة محفوظة" : "إدخال بطاقة جديدة"}" disabled />
+            <label>اسم المقيمة</label>
+            <input id="evaluatorName" value="${esc(v.evaluatorName)}" />
           </div>
         </div>
 
@@ -249,8 +273,8 @@
         <h2 style="font-size:16px;margin:0 0 6px">سلالم التقدير</h2>
         <div class="rubric" id="rubricBox">${rubricHtml}</div>
 
-        <label>ملاحظات نوعية</label>
-        <textarea id="notes" placeholder="اكتبي الملاحظات...">${esc(v.notes)}</textarea>
+        <label>ملاحظات داعمة</label>
+        <textarea id="notes" placeholder="اكتبي ملاحظات (نقاط قوة/جوانب تحسين)...">${esc(v.notes)}</textarea>
 
         <div class="tools">
           <button class="btn green" id="saveBtn">💾 ${editId ? "تحديث البطاقة" : "حفظ البطاقة"}</button>
@@ -260,13 +284,13 @@
         </div>
 
         <div class="notice">
-          ✔️ التقييم يتم بعد فتح رابط الصف ثم تعبئة البطاقة للدرس/الصف.<br>
-          * لا يوجد اسم طالبة حسب طلبك.
+          ✔️ افتحي رابط الصف ثم قيّمي الطالبة في الدرس نفسه واحفظي البطاقة.<br>
+          بعد الحفظ ستجدينها في "استعراض بطاقات الطالبات" ويمكن تعديلها لاحقًا.
         </div>
       </div>
     `;
 
-    // Grade
+    // grade
     const gradeSel = document.getElementById("grade");
     gradeSel.value = v.grade || "";
     gradeSel.onchange = () => {
@@ -274,7 +298,7 @@
       document.getElementById("linksHere").innerHTML = openLinksBlock(gradeSel.value);
     };
 
-    // rubric interactions
+    // rubric
     const levels = {...(v.levels || {})};
     document.querySelectorAll(".lvl").forEach(box=>{
       box.addEventListener("click", ()=>{
@@ -290,21 +314,23 @@
     document.getElementById("saveBtn").onclick = () => {
       const grade = gradeSel.value;
       const date  = (document.getElementById("date").value || "").trim();
+      const studentName = (document.getElementById("studentName").value || "").trim();
+      const studentClass = (document.getElementById("studentClass").value || "").trim();
       const lessonTitle = (document.getElementById("lessonTitle").value || "").trim();
-      const observerName = (document.getElementById("observerName").value || "").trim();
-      const teacherObserved = (document.getElementById("teacherObserved").value || "").trim();
+      const evaluatorName = (document.getElementById("evaluatorName").value || "").trim();
       const notes = (document.getElementById("notes").value || "").trim();
 
       if(!grade){ alert("فضلاً اختاري الصف الدراسي."); return; }
+      if(!studentName){ alert("فضلاً اكتبي اسم الطالبة."); return; }
       if(!lessonTitle){ alert("فضلاً اكتبي عنوان الدرس."); return; }
       if(Object.keys(levels).length < 3){ alert("اختاري سلالم التقدير (على الأقل 3 معايير)."); return; }
 
-      const list = loadObs();
+      const list = loadEvals();
       const record = {
         id: v.id,
         createdAt: v.createdAt || nowISO(),
         updatedAt: nowISO(),
-        grade, date, lessonTitle, observerName, teacherObserved, notes,
+        grade, date, studentName, studentClass, lessonTitle, evaluatorName, notes,
         levels
       };
 
@@ -312,8 +338,8 @@
       if(idx >= 0) list[idx] = record;
       else list.unshift(record);
 
-      saveObs(list);
-      alert(idx>=0 ? "تم تحديث البطاقة ✅" : "تم حفظ البطاقة ✅");
+      saveEvals(list);
+      alert(idx>=0 ? "تم تحديث بطاقة الطالبة ✅" : "تم حفظ بطاقة الطالبة ✅");
       renderList();
     };
 
@@ -323,14 +349,16 @@
   }
 
   function renderList(){
-    const list = loadObs();
+    const list = loadEvals();
     view.innerHTML = `
       <div class="card">
-        <h2>📚 استعراض بطاقات الملاحظة</h2>
-        <div class="notice">يمكنك فتح رابط الصف من داخل بطاقة التعديل/الإنشاء، ثم تحديث التقييم حسب الدرس.</div>
+        <h2>📚 استعراض بطاقات الطالبات</h2>
+        <div class="notice">
+          يمكنك البحث باسم الطالبة أو الصف أو عنوان الدرس، ثم تعديل البطاقة لاحقًا.
+        </div>
 
         <div class="tools">
-          <input id="q" class="search" placeholder="بحث: مثال (4) أو (حالات المادة)..." />
+          <input id="q" class="search" placeholder="بحث: (سارة) أو (4) أو (حالات المادة)..." />
           <button class="btn green" id="newCardBtn">➕ بطاقة جديدة</button>
           <button class="btn" id="printBtn">🖨️ طباعة</button>
         </div>
@@ -354,10 +382,10 @@
             <div class="item">
               <div class="itemTop">
                 <div>
-                  <div class="itemTitle">الصف ${esc(rec.grade)} — ${esc(rec.lessonTitle)}</div>
+                  <div class="itemTitle">${esc(rec.studentName)} <span class="pill">الصف ${esc(rec.grade)}</span> — ${esc(rec.lessonTitle)}</div>
                   <div class="itemMeta">
-                    التاريخ: ${esc(rec.date || "")} — آخر تحديث: ${esc(when)}
-                    <span class="pill">المجموع ${sc}/${maxScore()}</span>
+                    الشعبة: ${esc(rec.studentClass||"—")} — التاريخ: ${esc(rec.date||"")}
+                    — آخر تحديث: ${esc(when)} — <span class="pill">المجموع ${sc}/${maxScore()}</span>
                   </div>
                 </div>
                 <div class="itemBtns">
@@ -367,8 +395,7 @@
                 </div>
               </div>
               <div class="muted" style="margin-top:8px">
-                الملاحِظة: ${esc(rec.observerName || "")}
-                ${rec.teacherObserved ? " — المعلمة المُلاحظة: " + esc(rec.teacherObserved) : ""}
+                المقيمة: ${esc(rec.evaluatorName||"")} ${rec.notes ? " — ملاحظة: " + esc(rec.notes) : ""}
               </div>
             </div>
           `;
@@ -382,8 +409,8 @@
       box.querySelectorAll("[data-del]").forEach(b=>{
         b.onclick = ()=>{
           const id = b.getAttribute("data-del");
-          if(!confirm("تأكيد حذف البطاقة؟")) return;
-          saveObs(loadObs().filter(x=>x.id!==id));
+          if(!confirm("تأكيد حذف بطاقة الطالبة؟")) return;
+          saveEvals(loadEvals().filter(x=>x.id!==id));
           draw(filterList(document.getElementById("q").value || ""));
         };
       });
@@ -394,9 +421,10 @@
       if(!q) return list;
       return list.filter(r=>{
         const g = String(r.grade||"").toLowerCase();
+        const s = (r.studentName||"").toLowerCase();
         const t = (r.lessonTitle||"").toLowerCase();
-        const o = (r.observerName||"").toLowerCase();
-        return g.includes(q) || t.includes(q) || o.includes(q);
+        const c = (r.studentClass||"").toLowerCase();
+        return g.includes(q) || s.includes(q) || t.includes(q) || c.includes(q);
       });
     }
 
@@ -407,18 +435,18 @@
     draw(list);
   }
 
-  // شريط علوي
+  // top bar
   document.getElementById("goForm").onclick = ()=> renderForm(null);
   document.getElementById("goList").onclick = ()=> renderList();
   document.getElementById("clearLocal").onclick = ()=>{
-    if(confirm("سيتم مسح جميع البطاقات المحفوظة على هذا الجهاز فقط. متابعة؟")){
-      localStorage.removeItem(LS_OBS);
+    if(confirm("سيتم مسح جميع بطاقات الطالبات المحفوظة على هذا الجهاز فقط. متابعة؟")){
+      localStorage.removeItem(LS_STU_EVAL);
       localStorage.removeItem(LS_GRADE);
       renderForm(null);
     }
   };
 
-  // تشغيل
+  // start
   renderForm(null);
 </script>
 
