@@ -6,612 +6,585 @@
   <title>منصة التقويم لمادة العلوم - إعداد المعلمة بدرية محمد الزهراني</title>
   <style>
     :root{
-      --bg:#0b1220; --card:#101a33; --text:#eef4ff; --muted:#a7b4d6;
-      --accent:#6aa8ff; --danger:#ff6a6a; --border:rgba(255,255,255,.14);
-      --radius:18px;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#d1d5db;
+      --green:#0f7a3a;      /* أخضر رسمي */
+      --green2:#16a34a;     /* أخضر زر */
+      --soft:#f8fafc;
+      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
+      --radius:14px;
+      --max: 860px;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      background:radial-gradient(1000px 700px at 70% 10%, rgba(106,168,255,.18), transparent 60%),
-                 radial-gradient(900px 650px at 15% 90%, rgba(255,106,106,.12), transparent 60%),
-                 var(--bg);
+      background:var(--bg);
       color:var(--text);
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      font-size:20px;
+      font-size:18px;
       line-height:1.6;
     }
-    .wrap{max-width:1100px; margin:0 auto; padding:18px 14px 30px}
-    .top{
+    .page{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 14px 40px;
+    }
+    .header{
       border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius:var(--radius);
-      padding:16px;
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      border-top: 6px solid var(--green);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 16px 16px;
+      text-align:center;
+    }
+    .header h1{margin:0; font-size:22px}
+    .header .sub{margin:6px 0 0; color:var(--muted); font-size:14px}
+
+    .nav{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      justify-content:center;
       flex-wrap:wrap;
-      position:sticky; top:10px; z-index:20;
-      backdrop-filter: blur(10px);
     }
-    .brand{display:flex; gap:12px; align-items:center}
-    .logo{
-      width:44px; height:44px; border-radius:14px;
-      background:conic-gradient(from 210deg, var(--accent), #8dffb0, #ffd48a, var(--accent));
-      box-shadow:0 12px 30px rgba(106,168,255,.22);
-    }
-    h1{margin:0; font-size:22px}
-    .sub{margin:3px 0 0; color:var(--muted); font-size:14px}
-    .btns{display:flex; gap:10px; flex-wrap:wrap}
-    button{
+    .btn{
       border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
+      background:#fff;
       color:var(--text);
       padding:10px 14px;
-      border-radius:14px;
+      border-radius: 12px;
       cursor:pointer;
-      font-size:16px;
+      font-size:15px;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, .05);
     }
-    button:hover{background:rgba(255,255,255,.10)}
-    button.primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
-    button.danger{border-color:rgba(255,106,106,.55); background:rgba(255,106,106,.14)}
-
-    .grid{display:grid; gap:14px; margin-top:14px}
-    @media(min-width:980px){ .grid{grid-template-columns: 1.05fr .95fr} }
+    .btn:hover{background:var(--soft)}
+    .btn.primary{
+      border-color: rgba(15,122,58,.35);
+      background: rgba(15,122,58,.08);
+    }
+    .btn.green{
+      border-color: rgba(22,163,74,.35);
+      background: rgba(22,163,74,.10);
+    }
+    .btn.danger{
+      border-color: rgba(220,38,38,.35);
+      background: rgba(220,38,38,.06);
+      color:#7f1d1d;
+    }
 
     .card{
+      margin-top: 14px;
       border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius:var(--radius);
-      padding:16px;
+      border-left: 6px solid var(--green);
+      border-radius: var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding: 16px;
     }
-    .card h2{margin:0 0 8px; font-size:20px}
+    .card h2{margin:0 0 10px; font-size:18px}
     .muted{color:var(--muted); font-size:14px}
 
-    label{display:block; color:var(--muted); font-size:15px; margin-top:10px}
+    label{display:block; margin-top:10px; color:var(--muted); font-size:14px}
     input, select, textarea{
       width:100%;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.18);
-      color:var(--text);
-      font-size:18px;
-      outline:none;
       margin-top:6px;
+      padding:12px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:16px;
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(15,122,58,.55);
+      box-shadow: 0 0 0 4px rgba(15,122,58,.10);
     }
     textarea{min-height:90px; resize:vertical}
 
-    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center}
-    .notice{
-      border:1px dashed rgba(255,255,255,.25);
-      background:rgba(255,255,255,.04);
-      padding:12px;
-      border-radius:16px;
-      color:var(--muted);
-      font-size:15px;
-    }
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .col{flex:1; min-width:240px}
 
-    .item{
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.14);
-      border-radius:16px;
-      padding:12px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      margin-top:10px;
-      flex-wrap:wrap;
-    }
-    .item .t{font-weight:800}
-    .item .m{color:var(--muted); font-size:14px}
-    .actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
-    a.linkbtn{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:14px;
-      text-decoration:none;
-      font-size:16px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    a.linkbtn:hover{background:rgba(255,255,255,.10)}
-    a.linkbtn.primary{border-color:rgba(106,168,255,.45); background:rgba(106,168,255,.18)}
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:13px;
-      padding:2px 6px;
-      border-radius:8px;
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.22);
-      color:var(--text);
-      display:inline-block;
-      direction:ltr;
-      user-select:all;
-      word-break:break-all;
+    .notice{
+      margin-top: 10px;
+      background: #f0fdf4;
+      border:1px dashed rgba(22,163,74,.45);
+      color:#14532d;
+      border-radius: 12px;
+      padding:10px 12px;
+      font-size:14px;
     }
 
     /* Rubric */
-    .rubric{display:grid; gap:10px; margin-top:10px}
+    .rubric{display:grid; gap:10px; margin-top:12px}
     .crit{
       border:1px solid var(--border);
-      background:rgba(0,0,0,.12);
-      border-radius:16px;
-      padding:12px;
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
     }
-    .crit .head{display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap}
-    .crit .name{font-weight:800}
-    .scale{display:grid; gap:8px; margin-top:10px}
-    @media(min-width:980px){ .scale{grid-template-columns: repeat(4, 1fr)} }
+    .critHead{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .critName{font-weight:700}
+    .levels{
+      margin-top:10px;
+      display:grid;
+      gap:10px;
+    }
+    @media(min-width:760px){ .levels{grid-template-columns: repeat(4, 1fr)} }
     .lvl{
       border:1px solid var(--border);
-      border-radius:14px;
-      padding:10px;
-      background:rgba(255,255,255,.04);
+      border-radius: 12px;
+      padding: 10px;
+      background:#fff;
       cursor:pointer;
       user-select:none;
-      min-height:64px;
+      min-height:78px;
       display:flex; flex-direction:column; gap:6px;
     }
-    .lvl b{font-size:15px}
-    .lvl span{font-size:13px; color:var(--muted)}
-    .lvl.active{border-color: rgba(106,168,255,.65); background:rgba(106,168,255,.15)}
+    .lvl b{font-size:14px}
+    .lvl span{font-size:12px; color:var(--muted)}
+    .lvl.active{
+      border-color: rgba(22,163,74,.70);
+      background: rgba(22,163,74,.08);
+      box-shadow: 0 0 0 4px rgba(22,163,74,.10);
+    }
+
+    /* Table list */
+    .tools{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;
+    }
+    .search{
+      flex:1; min-width:220px;
+    }
+    .list{
+      margin-top: 12px;
+      display:grid; gap:10px;
+    }
+    .item{
+      border:1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background:#fff;
+    }
+    .itemTop{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:10px; flex-wrap:wrap;
+    }
+    .itemTitle{font-weight:800}
+    .itemMeta{color:var(--muted); font-size:13px; margin-top:4px}
+    .itemBtns{display:flex; gap:8px; flex-wrap:wrap}
+    .pill{
+      display:inline-block;
+      padding:2px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(15,122,58,.25);
+      background: rgba(15,122,58,.06);
+      color:#14532d;
+      margin-inline-start:6px;
+    }
     .hr{height:1px; background:var(--border); margin:12px 0}
-    .table{width:100%; border-collapse:collapse; margin-top:10px; font-size:14px}
-    .table th,.table td{border:1px solid var(--border); padding:8px; vertical-align:top}
-    .table th{background:rgba(255,255,255,.06); text-align:right}
-    .tag{font-size:12px; color:var(--muted)}
+
     @media print{
-      body{background:white; color:black}
-      .top,.btns{display:none !important}
-      .card{box-shadow:none; background:white; border:1px solid #ccc}
-      .lvl{background:white}
-      .notice{border:1px dashed #999}
-      a.linkbtn{display:none !important}
+      .nav, .itemBtns, .tools {display:none !important}
+      body{background:#fff}
+      .card, .header{box-shadow:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>منصة التقويم لمادة العلوم</h1>
-          <div class="sub">إعداد المعلمة بدرية محمد الزهراني</div>
-        </div>
-      </div>
-      <div class="btns">
-        <button id="homeBtn" class="primary" type="button">🏠 الرئيسية</button>
-        <button id="obsBtn" type="button">📝 بطاقة الملاحظة</button>
-        <button id="resetBtn" class="danger" type="button" title="يمسح بيانات هذا الجهاز فقط">🧹 مسح بيانات هذا الجهاز</button>
+  <div class="page">
+    <div class="header">
+      <h1>منصة التقويم لمادة العلوم</h1>
+      <div class="sub">إعداد المعلمة بدرية محمد الزهراني</div>
+
+      <div class="nav">
+        <button class="btn primary" id="goForm">📝 بطاقة الملاحظة</button>
+        <button class="btn" id="goList">📚 استعراض البطاقات</button>
+        <button class="btn danger" id="clearLocal" title="يمسح بيانات هذا الجهاز فقط">🧹 مسح بيانات الجهاز</button>
       </div>
     </div>
 
-    <div id="app" class="grid"></div>
+    <div id="view"></div>
   </div>
 
 <script>
-  // روابط كانفا (صفوف)
-  const CANVA = {
-    4: "https://36primery-school.my.canva.site/dahajdyfjhk",
-    5: "https://36primery-school.my.canva.site/dahajeso-mu",
-    6: "https://36primery-school.my.canva.site/dahairgwces"
-  };
+  // ===== إعدادات عامة =====
+  const LS_GRADE = "science_obs_grade_v1";
+  const LS_OBS   = "science_observations_v2";
 
-  // دروس افتراضية (روابط الدروس الآن = نفس رابط الصف)
-  // إذا أعطيتيني لاحقًا روابط منفصلة لكل درس، أربطها هنا بسهولة.
-  const LESSONS = {
-    4: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
-    5: ["درس 1","درس 2","درس 3","درس 4","درس 5"],
-    6: ["درس 1","درس 2","درس 3","درس 4","درس 5"]
-  };
-
-  const LS_NAME = "science_platform_visitor_name_v1";
-  const LS_VIS  = "science_platform_visits_v1";
-  const LS_OBS  = "science_platform_observations_v1";
+  // سلالم التقدير (4 مستويات) - يمكنك تعديل النصوص
+  const RUBRIC = [
+    { key:"objective", name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن"] },
+    { key:"engage",    name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
+    { key:"strategy",  name:"استراتيجيات التدريس", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
+    { key:"assessment",name:"التقويم والتغذية الراجعة", desc:["لا يوجد", "محدود", "مستمر", "مستمر + فاعل"] },
+    { key:"classroom", name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
+  ];
 
   function esc(s){ return (s??"").toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
   function nowISO(){ return new Date().toISOString(); }
+  function uid(){ return (crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
 
-  function baseUrl(){
-    const u = new URL(location.href);
-    // حافظ على المسار الحالي (GitHub Pages) لكن احذف الباراميترات
-    u.search = "";
-    return u.toString();
-  }
-  function shareLink(grade, lessonIndex){
-    const u = new URL(location.href);
-    u.searchParams.set("grade", grade);
-    u.searchParams.set("lesson", lessonIndex);
-    return u.toString();
+  function loadObs(){ return JSON.parse(localStorage.getItem(LS_OBS) || "[]"); }
+  function saveObs(list){ localStorage.setItem(LS_OBS, JSON.stringify(list)); }
+
+  function getToday(){
+    const t = new Date();
+    const y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
+    return `${y}-${m}-${d}`;
   }
 
-  function saveVisit(name, grade, lessonIndex){
-    const log = JSON.parse(localStorage.getItem(LS_VIS) || "[]");
-    log.unshift({t: nowISO(), name, grade, lessonIndex});
-    localStorage.setItem(LS_VIS, JSON.stringify(log.slice(0, 300)));
-  }
+  // ===== واجهات العرض =====
+  const view = document.getElementById("view");
 
-  function renderVisits(){
-    const box = document.getElementById("visitsBox");
-    if(!box) return;
-    const log = JSON.parse(localStorage.getItem(LS_VIS) || "[]");
-    if(!log.length){ box.innerHTML = "لا توجد زيارات مسجلة على هذا الجهاز."; return; }
-    const rows = log.slice(0, 12).map(v=>{
-      const when = new Date(v.t).toLocaleString("ar-SA");
-      return `• ${esc(v.name)} — صف ${esc(v.grade)} — درس ${esc(v.lessonIndex)} — ${esc(when)}`;
-    }).join("<br>");
-    box.innerHTML = rows;
-  }
+  function renderForm(editId=null){
+    const gradeSaved = localStorage.getItem(LS_GRADE) || "";
+    const list = loadObs();
+    const existing = editId ? list.find(x=>x.id===editId) : null;
 
-  // مهم: فتح الروابط عبر <a> لتفادي حظر النوافذ
-  function linkButton(href, label, cls=""){
-    return `<a class="linkbtn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-  }
+    const v = existing || {
+      id: uid(),
+      createdAt: nowISO(),
+      updatedAt: nowISO(),
+      grade: gradeSaved,
+      date: getToday(),
+      lessonTitle: "",
+      observerName: "بدرية محمد الزهراني",
+      teacherObserved: "",
+      notes: "",
+      levels: {}
+    };
 
-  function renderHome(){
-    const savedName = localStorage.getItem(LS_NAME) || "";
-    const app = document.getElementById("app");
-    app.innerHTML = `
-      <div class="card">
-        <h2>الدخول</h2>
-        <div class="notice">
-          إذا كانت الروابط لا تفتح سابقًا فذلك بسبب منع المتصفح للنوافذ المنبثقة.
-          هذه النسخة تفتح الروابط كـ <b>روابط مباشرة</b> لضمان عملها.
+    // بناء rubric HTML
+    const rubricHtml = RUBRIC.map((c, idx)=>{
+      const picked = v.levels?.[c.key] || 0;
+      const levelBoxes = [1,2,3,4].map(lvl=>`
+        <div class="lvl ${picked===lvl ? "active" : ""}" data-crit="${esc(c.key)}" data-lvl="${lvl}">
+          <b>مستوى ${lvl}</b>
+          <span>${esc(c.desc[lvl-1])}</span>
         </div>
+      `).join("");
 
-        <label>اسم الطالبة / الزائرة</label>
-        <input id="nameInput" placeholder="اكتبي الاسم هنا" value="${esc(savedName)}"/>
+      return `
+        <div class="crit">
+          <div class="critHead">
+            <div class="critName">${idx+1}) ${esc(c.name)}</div>
+            <div class="muted">اختاري مستوى واحد</div>
+          </div>
+          <div class="levels">${levelBoxes}</div>
+        </div>
+      `;
+    }).join("");
 
-        <label>اختاري الصف</label>
-        <select id="gradeSelect">
-          <option value="">-- اختاري --</option>
-          <option value="4">الصف الرابع</option>
-          <option value="5">الصف الخامس</option>
-          <option value="6">الصف السادس</option>
-        </select>
+    view.innerHTML = `
+      <div class="card">
+        <h2>📝 بطاقة الملاحظة ${editId ? '<span class="pill">تعديل</span>' : ""}</h2>
+        <div class="notice">
+          يتم حفظ البطاقات على هذا الجهاز. يمكنك الرجوع لها وتعديلها في أي وقت من "استعراض البطاقات".
+        </div>
 
         <div class="row">
-          <button id="enterBtn" class="primary" type="button">✅ عرض الدروس</button>
-          <span class="tag">أو افتحي رابط الصف مباشرة بعد اختيار الصف</span>
+          <div class="col">
+            <label>الصف الدراسي</label>
+            <select id="grade">
+              <option value="">-- اختاري الصف --</option>
+              <option value="4">الصف الرابع</option>
+              <option value="5">الصف الخامس</option>
+              <option value="6">الصف السادس</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>تاريخ الملاحظة</label>
+            <input id="date" type="date" value="${esc(v.date)}" />
+          </div>
         </div>
 
-        <div class="row" id="directLinksRow" style="margin-top:10px"></div>
-
-        <div class="notice" style="margin-top:12px">
-          رابط المنصة للمشاركة: <span class="kbd">${esc(baseUrl())}</span>
+        <div class="row">
+          <div class="col">
+            <label>عنوان الدرس</label>
+            <input id="lessonTitle" placeholder="مثال: حالات المادة" value="${esc(v.lessonTitle)}" />
+          </div>
+          <div class="col">
+            <label>اسم الملاحِظة</label>
+            <input id="observerName" value="${esc(v.observerName)}" />
+          </div>
         </div>
-      </div>
 
-      <div class="card">
-        <h2>آخر الزيارات (على هذا الجهاز)</h2>
-        <div id="visitsBox" class="notice">...</div>
+        <div class="row">
+          <div class="col">
+            <label>اسم المعلمة المُلاحظة (اختياري)</label>
+            <input id="teacherObserved" placeholder="اختياري" value="${esc(v.teacherObserved)}" />
+          </div>
+          <div class="col">
+            <label>حالة البطاقة</label>
+            <input value="${editId ? "تحديث بطاقة محفوظة" : "إدخال بطاقة جديدة"}" disabled />
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <h2 style="font-size:16px;margin:0 0 6px">سلالم التقدير</h2>
+        <div class="rubric" id="rubricBox">${rubricHtml}</div>
+
+        <label>ملاحظات نوعية</label>
+        <textarea id="notes" placeholder="اكتبي الملاحظات...">${esc(v.notes)}</textarea>
+
+        <div class="tools">
+          <button class="btn green" id="saveBtn">💾 ${editId ? "تحديث البطاقة" : "حفظ البطاقة"}</button>
+          <button class="btn" id="newBtn">➕ بطاقة جديدة</button>
+          <button class="btn" id="printBtn">🖨️ طباعة</button>
+          <button class="btn" id="listBtn">📚 استعراض البطاقات</button>
+        </div>
+
+        <div class="muted" style="margin-top:10px">
+          * لا يوجد اسم طالبة هنا حسب طلبك. الإدخال يبدأ باختيار الصف ثم تعبئة البطاقة.
+        </div>
       </div>
     `;
 
-    const directRow = document.getElementById("directLinksRow");
-    directRow.innerHTML =
-      linkButton(CANVA[4], "🔗 فتح تقويم الصف الرابع", "primary") +
-      linkButton(CANVA[5], "🔗 فتح تقويم الصف الخامس", "primary") +
-      linkButton(CANVA[6], "🔗 فتح تقويم الصف السادس", "primary");
+    // ضبط اختيار الصف
+    const gradeSel = document.getElementById("grade");
+    gradeSel.value = v.grade || "";
+    gradeSel.onchange = () => localStorage.setItem(LS_GRADE, gradeSel.value);
 
-    document.getElementById("enterBtn").onclick = () => {
-      const name = (document.getElementById("nameInput").value || "").trim();
-      const grade = document.getElementById("gradeSelect").value;
-      if(!name || !grade){
-        alert("اكتبي الاسم واختاري الصف.");
-        return;
-      }
-      localStorage.setItem(LS_NAME, name);
-      renderLessons(name, grade);
+    // تفعيل rubric اختيار
+    const levels = {...(v.levels || {})};
+    document.querySelectorAll(".lvl").forEach(box=>{
+      box.addEventListener("click", ()=>{
+        const crit = box.getAttribute("data-crit");
+        const lvl  = Number(box.getAttribute("data-lvl"));
+        levels[crit] = lvl;
+
+        // إطفاء باقي نفس المعيار
+        document.querySelectorAll(`.lvl[data-crit="${crit}"]`).forEach(x=>x.classList.remove("active"));
+        box.classList.add("active");
+      });
+    });
+
+    // حفظ/تحديث
+    document.getElementById("saveBtn").onclick = () => {
+      const grade = gradeSel.value;
+      const date  = (document.getElementById("date").value || "").trim();
+      const lessonTitle = (document.getElementById("lessonTitle").value || "").trim();
+      const observerName = (document.getElementById("observerName").value || "").trim();
+      const teacherObserved = (document.getElementById("teacherObserved").value || "").trim();
+      const notes = (document.getElementById("notes").value || "").trim();
+
+      const pickedCount = Object.keys(levels).length;
+
+      if(!grade){ alert("فضلاً اختاري الصف الدراسي."); return; }
+      if(!lessonTitle){ alert("فضلاً اكتبي عنوان الدرس."); return; }
+      if(pickedCount < 3){ alert("فضلاً اختاري سلالم التقدير (على الأقل 3 معايير)."); return; }
+
+      const list = loadObs();
+      const record = {
+        id: v.id,
+        createdAt: v.createdAt || nowISO(),
+        updatedAt: nowISO(),
+        grade, date, lessonTitle, observerName, teacherObserved, notes,
+        levels
+      };
+
+      const idx = list.findIndex(x=>x.id===record.id);
+      if(idx >= 0) list[idx] = record;
+      else list.unshift(record);
+
+      saveObs(list);
+      alert(idx>=0 ? "تم تحديث البطاقة ✅" : "تم حفظ البطاقة ✅");
+      renderList(); // بعد الحفظ نعرض القائمة
     };
 
-    renderVisits();
+    document.getElementById("newBtn").onclick = ()=> renderForm(null);
+    document.getElementById("printBtn").onclick = ()=> window.print();
+    document.getElementById("listBtn").onclick = ()=> renderList();
   }
 
-  function renderLessons(name, grade){
-    const app = document.getElementById("app");
-    const list = LESSONS[grade] || ["درس عام"];
-    const items = list.map((title, idx)=>{
-      const lessonIndex = idx + 1;
-      const share = shareLink(grade, lessonIndex);
+  function scoreOf(rec){
+    return RUBRIC.reduce((acc,c)=> acc + (rec.levels?.[c.key] || 0), 0);
+  }
+  function maxScore(){ return RUBRIC.length * 4; }
 
-      // حالياً رابط الدرس = رابط الصف (حتى تزوديني بروابط دروس منفصلة)
-      const canvaUrl = CANVA[grade];
+  function renderList(){
+    const list = loadObs();
+    view.innerHTML = `
+      <div class="card">
+        <h2>📚 استعراض بطاقات الملاحظة</h2>
+        <div class="notice">
+          يمكنك البحث بالصف أو عنوان الدرس، ثم فتح بطاقة للتعديل أو الطباعة.
+        </div>
 
+        <div class="tools">
+          <input id="q" class="search" placeholder="بحث: مثال (خامس) أو (حالات المادة)..." />
+          <button class="btn green" id="newCardBtn">➕ بطاقة جديدة</button>
+          <button class="btn" id="printBtn">🖨️ طباعة</button>
+        </div>
+
+        <div id="listBox" class="list"></div>
+        <div class="muted" style="margin-top:10px">عدد البطاقات: <b id="count"></b></div>
+      </div>
+    `;
+
+    const box = document.getElementById("listBox");
+    const count = document.getElementById("count");
+
+    function draw(filtered){
+      if(!filtered.length){
+        box.innerHTML = `<div class="notice">لا توجد بطاقات مطابقة.</div>`;
+      } else {
+        box.innerHTML = filtered.map(rec=>{
+          const when = new Date(rec.updatedAt || rec.createdAt).toLocaleString("ar-SA");
+          const sc = scoreOf(rec);
+          return `
+            <div class="item">
+              <div class="itemTop">
+                <div>
+                  <div class="itemTitle">الصف ${esc(rec.grade)} — ${esc(rec.lessonTitle)}</div>
+                  <div class="itemMeta">
+                    التاريخ: ${esc(rec.date || "")} — آخر تحديث: ${esc(when)}
+                    <span class="pill">المجموع ${sc}/${maxScore()}</span>
+                  </div>
+                </div>
+                <div class="itemBtns">
+                  <button class="btn primary" data-edit="${esc(rec.id)}">✏️ تعديل</button>
+                  <button class="btn" data-view="${esc(rec.id)}">👁️ عرض</button>
+                  <button class="btn danger" data-del="${esc(rec.id)}">🗑️ حذف</button>
+                </div>
+              </div>
+              <div class="muted" style="margin-top:8px">
+                الملاحِظة: ${esc(rec.observerName || "")}
+                ${rec.teacherObserved ? " — المعلمة المُلاحظة: " + esc(rec.teacherObserved) : ""}
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+      count.textContent = String(filtered.length);
+
+      // أزرار
+      box.querySelectorAll("[data-edit]").forEach(b=>{
+        b.onclick = ()=> renderForm(b.getAttribute("data-edit"));
+      });
+      box.querySelectorAll("[data-view]").forEach(b=>{
+        b.onclick = ()=> renderReadOnly(b.getAttribute("data-view"));
+      });
+      box.querySelectorAll("[data-del]").forEach(b=>{
+        b.onclick = ()=>{
+          const id = b.getAttribute("data-del");
+          if(!confirm("تأكيد حذف البطاقة؟")) return;
+          const next = loadObs().filter(x=>x.id!==id);
+          saveObs(next);
+          draw(filterList(document.getElementById("q").value || ""));
+        };
+      });
+    }
+
+    function filterList(q){
+      q = (q||"").trim().toLowerCase();
+      if(!q) return list;
+      return list.filter(r=>{
+        const g = ("صف " + (r.grade||"")).toLowerCase();
+        const t = (r.lessonTitle||"").toLowerCase();
+        const o = (r.observerName||"").toLowerCase();
+        return g.includes(q) || t.includes(q) || o.includes(q);
+      });
+    }
+
+    document.getElementById("q").oninput = (e)=> draw(filterList(e.target.value));
+    document.getElementById("newCardBtn").onclick = ()=> renderForm(null);
+    document.getElementById("printBtn").onclick = ()=> window.print();
+
+    draw(list);
+  }
+
+  function renderReadOnly(id){
+    const list = loadObs();
+    const rec = list.find(x=>x.id===id);
+    if(!rec){ renderList(); return; }
+
+    const when = new Date(rec.updatedAt || rec.createdAt).toLocaleString("ar-SA");
+    const rubricRows = RUBRIC.map(c=>{
+      const lvl = rec.levels?.[c.key] || 0;
+      const txt = lvl ? c.desc[lvl-1] : "—";
       return `
-        <div class="item">
-          <div>
-            <div class="t">${esc(title)} (الصف ${esc(grade)})</div>
-            <div class="m">رابط خاص لمشاركة هذا الدرس (يفتح الدرس مباشرة)</div>
-            <div class="kbd">${esc(share)}</div>
-          </div>
-          <div class="actions">
-            ${linkButton(canvaUrl, "فتح الدرس", "primary")}
-            <button type="button" data-copy="${lessonIndex}">نسخ رابط المشاركة</button>
+        <div class="crit">
+          <div class="critHead">
+            <div class="critName">${esc(c.name)}</div>
+            <div class="muted">المستوى: <b>${lvl || "—"}</b> — ${esc(txt)}</div>
           </div>
         </div>
       `;
     }).join("");
 
-    app.innerHTML = `
+    view.innerHTML = `
       <div class="card">
-        <h2>مرحبًا ${esc(name)} 👋</h2>
+        <h2>👁️ عرض البطاقة</h2>
         <div class="notice">
-          الصف المختار: <b>${esc(grade)}</b> — افتحي الدروس بالأزرار (روابط مباشرة).
-        </div>
-        <div class="row">
-          ${linkButton(CANVA[grade], "🔗 فتح تقويم الصف بالكامل", "primary")}
-          <button id="backBtn" type="button">⬅️ رجوع</button>
-        </div>
-
-        ${items}
-
-        <div class="hr"></div>
-        <div class="notice">
-          ✳️ إذا رغبتِ أن يكون لكل درس رابط كانفا مستقل (بدل رابط واحد للصف)، أرسلي روابط الدروس وسأربطها هنا.
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>بطاقة الملاحظة</h2>
-        <div class="notice">اضغطي زر <b>📝 بطاقة الملاحظة</b> من الأعلى لتعبئة بطاقة تفاعلية بسلالم تقدير وحفظها وطباعةها.</div>
-      </div>
-    `;
-
-    document.getElementById("backBtn").onclick = () => renderHome();
-
-    app.querySelectorAll("[data-copy]").forEach(btn=>{
-      btn.addEventListener("click", async ()=>{
-        const lessonIndex = Number(btn.getAttribute("data-copy")) || 0;
-        const share = shareLink(grade, lessonIndex);
-        try{
-          await navigator.clipboard.writeText(share);
-          btn.textContent = "✅ تم النسخ";
-          setTimeout(()=> btn.textContent="نسخ رابط المشاركة", 900);
-        }catch(e){
-          alert("لم يتم النسخ تلقائيًا. انسخي الرابط يدويًا من السطر الظاهر.");
-        }
-      });
-    });
-  }
-
-  // -------- بطاقة الملاحظة (Rubric) --------
-  const RUBRIC = [
-    { key:"objective", name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن للطالبات"] },
-    { key:"engage", name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
-    { key:"strategy", name:"استراتيجيات التعلم", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
-    { key:"assessment", name:"تقويم أثناء الدرس", desc:["لا يوجد", "محدود", "مستمر", "مستمر + تغذية راجعة"] },
-    { key:"classroom", name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
-  ];
-
-  function loadObs(){
-    return JSON.parse(localStorage.getItem(LS_OBS) || "[]");
-  }
-  function saveObs(list){
-    localStorage.setItem(LS_OBS, JSON.stringify(list));
-  }
-
-  function renderObservation(){
-    const savedName = localStorage.getItem(LS_NAME) || "";
-    const app = document.getElementById("app");
-
-    const today = new Date();
-    const y = today.getFullYear(), m = String(today.getMonth()+1).padStart(2,'0'), d = String(today.getDate()).padStart(2,'0');
-    const todayStr = `${y}-${m}-${d}`;
-
-    const rubricHtml = RUBRIC.map((c, idx)=>`
-      <div class="crit" data-crit="${esc(c.key)}">
-        <div class="head">
-          <div class="name">${idx+1}) ${esc(c.name)}</div>
-          <div class="muted">اختاري مستوى واحد</div>
-        </div>
-        <div class="scale">
-          ${[1,2,3,4].map(lvl=>`
-            <div class="lvl" data-lvl="${lvl}">
-              <b>مستوى ${lvl}</b>
-              <span>${esc(c.desc[lvl-1])}</span>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `).join("");
-
-    app.innerHTML = `
-      <div class="card">
-        <h2>📝 بطاقة ملاحظة تفاعلية</h2>
-        <div class="notice">
-          يتم حفظ البطاقات على هذا الجهاز. يمكنك الطباعة مباشرة.
+          الصف ${esc(rec.grade)} — ${esc(rec.lessonTitle)} — آخر تحديث: ${esc(when)}
+          <span class="pill">المجموع ${scoreOf(rec)}/${maxScore()}</span>
         </div>
 
         <div class="row">
-          <button id="printBtn" type="button">🖨️ طباعة</button>
-          <button id="backHomeBtn" class="primary" type="button">🏠 الرئيسية</button>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="row">
-          <div style="flex:1; min-width:240px">
-            <label>اسم الملاحِظة / المعلمة</label>
-            <input id="obsBy" value="بدرية محمد الزهراني" />
+          <div class="col">
+            <label>التاريخ</label>
+            <input value="${esc(rec.date||"")}" disabled />
           </div>
-          <div style="flex:1; min-width:240px">
-            <label>تاريخ الملاحظة</label>
-            <input id="obsDate" type="date" value="${esc(todayStr)}" />
+          <div class="col">
+            <label>الملاحِظة</label>
+            <input value="${esc(rec.observerName||"")}" disabled />
           </div>
         </div>
 
         <div class="row">
-          <div style="flex:1; min-width:240px">
-            <label>اسم المعلمة المُلاحَظة</label>
-            <input id="teacherName" placeholder="مثال: ..." />
+          <div class="col">
+            <label>المعلمة المُلاحظة</label>
+            <input value="${esc(rec.teacherObserved||"")}" disabled />
           </div>
-          <div style="flex:1; min-width:240px">
-            <label>الصف/الشعبة</label>
-            <input id="className" placeholder="مثال: سادس/أ" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div style="flex:1; min-width:240px">
+          <div class="col">
             <label>عنوان الدرس</label>
-            <input id="lessonTitle" placeholder="مثال: ..." />
-          </div>
-          <div style="flex:1; min-width:240px">
-            <label>اسم الطالبة (اختياري)</label>
-            <input id="studentName" value="${esc(savedName)}" />
+            <input value="${esc(rec.lessonTitle||"")}" disabled />
           </div>
         </div>
 
-        <div class="rubric" id="rubricBox">${rubricHtml}</div>
+        <div class="hr"></div>
+        <h2 style="font-size:16px;margin:0 0 6px">سلالم التقدير</h2>
+        <div class="rubric">${rubricRows}</div>
 
-        <label>ملاحظات نوعية</label>
-        <textarea id="notes" placeholder="اكتبي الملاحظات..."></textarea>
+        <label>الملاحظات</label>
+        <textarea disabled>${esc(rec.notes||"")}</textarea>
 
-        <div class="row">
-          <button id="saveObsBtn" class="primary" type="button">💾 حفظ البطاقة</button>
-          <button id="clearObsBtn" type="button">🧽 مسح الاختيارات</button>
+        <div class="tools">
+          <button class="btn primary" id="editBtn">✏️ تعديل</button>
+          <button class="btn" id="listBtn">📚 رجوع للقائمة</button>
+          <button class="btn" id="printBtn">🖨️ طباعة</button>
         </div>
-
-      </div>
-
-      <div class="card">
-        <h2>سجل البطاقات (على هذا الجهاز)</h2>
-        <div id="obsList" class="notice">...</div>
       </div>
     `;
 
-    // تفعيل اختيار المستويات
-    const selections = {}; // key => level
-    document.querySelectorAll(".crit").forEach(crit=>{
-      const key = crit.getAttribute("data-crit");
-      crit.querySelectorAll(".lvl").forEach(box=>{
-        box.addEventListener("click", ()=>{
-          const lvl = Number(box.getAttribute("data-lvl"));
-          selections[key] = lvl;
-          // reset visuals
-          crit.querySelectorAll(".lvl").forEach(x=>x.classList.remove("active"));
-          box.classList.add("active");
-        });
-      });
-    });
-
-    document.getElementById("clearObsBtn").onclick = ()=>{
-      Object.keys(selections).forEach(k=>delete selections[k]);
-      document.querySelectorAll(".lvl").forEach(x=>x.classList.remove("active"));
-      document.getElementById("notes").value = "";
-    };
-
-    document.getElementById("saveObsBtn").onclick = ()=>{
-      const record = {
-        id: crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()),
-        t: nowISO(),
-        obsBy: (document.getElementById("obsBy").value||"").trim(),
-        date: (document.getElementById("obsDate").value||"").trim(),
-        teacherName: (document.getElementById("teacherName").value||"").trim(),
-        className: (document.getElementById("className").value||"").trim(),
-        lessonTitle: (document.getElementById("lessonTitle").value||"").trim(),
-        studentName: (document.getElementById("studentName").value||"").trim(),
-        levels: {...selections},
-        notes: (document.getElementById("notes").value||"").trim(),
-      };
-
-      // تحقق بسيط
-      const picked = Object.keys(record.levels).length;
-      if(!record.teacherName || !record.className || !record.lessonTitle){
-        alert("فضلاً: اكملي (اسم المعلمة/الصف/عنوان الدرس).");
-        return;
-      }
-      if(picked < 3){
-        alert("فضلاً: اختاري مستويات سلالم التقدير (على الأقل 3 معايير).");
-        return;
-      }
-
-      const list = loadObs();
-      list.unshift(record);
-      saveObs(list.slice(0, 200));
-      alert("تم حفظ البطاقة ✅");
-      renderObsList();
-    };
-
+    document.getElementById("editBtn").onclick = ()=> renderForm(id);
+    document.getElementById("listBtn").onclick = ()=> renderList();
     document.getElementById("printBtn").onclick = ()=> window.print();
-    document.getElementById("backHomeBtn").onclick = ()=> renderHome();
-
-    function renderObsList(){
-      const box = document.getElementById("obsList");
-      const list = loadObs();
-      if(!list.length){
-        box.innerHTML = "لا توجد بطاقات محفوظة بعد.";
-        return;
-      }
-
-      const rows = list.slice(0, 12).map(r=>{
-        const when = new Date(r.t).toLocaleString("ar-SA");
-        const score = RUBRIC.reduce((acc,c)=> acc + (r.levels?.[c.key]||0), 0);
-        const max = RUBRIC.length * 4;
-        return `
-          <div style="margin-bottom:10px">
-            <b>${esc(r.teacherName)}</b> — ${esc(r.className)} — ${esc(r.lessonTitle)}<br>
-            <span class="tag">${esc(r.date)} — ${esc(when)} — المجموع: ${score}/${max}</span><br>
-            <button type="button" data-del="${esc(r.id)}" style="margin-top:6px">🗑️ حذف</button>
-          </div>
-        `;
-      }).join("<div class='hr'></div>");
-
-      box.innerHTML = rows;
-
-      box.querySelectorAll("[data-del]").forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          const id = btn.getAttribute("data-del");
-          const list = loadObs().filter(x=>x.id !== id);
-          saveObs(list);
-          renderObsList();
-        });
-      });
-    }
-
-    renderObsList();
   }
 
-  // دعم رابط مشاركة الدرس: ?grade=6&lesson=2
-  function handleDeepLink(){
-    const p = new URLSearchParams(location.search);
-    const grade = p.get("grade");
-    const lesson = Number(p.get("lesson") || "0");
-
-    if(!grade) return false;
-
-    const name = (localStorage.getItem(LS_NAME) || "").trim();
-    // إذا لم يُكتب الاسم من قبل: افتح الرئيسية
-    if(!name){
-      renderHome();
-      setTimeout(()=> alert("اكتبي اسمك أولاً ثم افتحي الدرس."), 50);
-      return true;
-    }
-
-    saveVisit(name, grade, lesson || 0);
-    // نعرض صفحة الدروس (والفتح يكون عبر زر الرابط المباشر)
-    renderLessons(name, grade);
-    return true;
-  }
-
-  // أزرار أعلى الصفحة
-  document.getElementById("homeBtn").onclick = ()=> renderHome();
-  document.getElementById("obsBtn").onclick  = ()=> renderObservation();
-  document.getElementById("resetBtn").onclick = ()=>{
-    if(confirm("هل تريدين مسح بيانات هذا الجهاز فقط؟")){
-      localStorage.removeItem(LS_NAME);
-      localStorage.removeItem(LS_VIS);
+  // ===== شريط علوي =====
+  document.getElementById("goForm").onclick = ()=> renderForm(null);
+  document.getElementById("goList").onclick = ()=> renderList();
+  document.getElementById("clearLocal").onclick = ()=>{
+    if(confirm("سيتم مسح جميع البطاقات المحفوظة على هذا الجهاز فقط. متابعة؟")){
       localStorage.removeItem(LS_OBS);
-      renderHome();
+      localStorage.removeItem(LS_GRADE);
+      renderForm(null);
     }
   };
 
-  // تشغيل
-  if(!handleDeepLink()) renderHome();
+  // ===== تشغيل افتراضي =====
+  renderForm(null);
 </script>
 
 </body>
