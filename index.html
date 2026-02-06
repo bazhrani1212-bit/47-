@@ -6,194 +6,95 @@
   <title>منصة التقويم لمادة العلوم - إعداد المعلمة بدرية محمد الزهراني</title>
   <style>
     :root{
-      --bg:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#d1d5db;
-      --green:#0f7a3a;      /* أخضر رسمي */
-      --green2:#16a34a;     /* أخضر زر */
-      --soft:#f8fafc;
-      --shadow: 0 10px 24px rgba(15, 23, 42, .08);
-      --radius:14px;
-      --max: 860px;
+      --bg:#ffffff; --text:#0f172a; --muted:#475569;
+      --border:#d1d5db; --green:#0f7a3a; --green2:#16a34a;
+      --soft:#f8fafc; --shadow: 0 10px 24px rgba(15,23,42,.08);
+      --radius:14px; --max: 900px;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      font-size:18px;
-      line-height:1.6;
-    }
-    .page{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 20px 14px 40px;
-    }
+    body{margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+      font-size:18px;line-height:1.6}
+    .page{max-width:var(--max);margin:0 auto;padding:20px 14px 40px}
     .header{
-      border:1px solid var(--border);
-      border-top: 6px solid var(--green);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: var(--shadow);
-      padding: 16px 16px;
-      text-align:center;
+      border:1px solid var(--border);border-top:6px solid var(--green);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
+      padding:16px;text-align:center
     }
-    .header h1{margin:0; font-size:22px}
-    .header .sub{margin:6px 0 0; color:var(--muted); font-size:14px}
-
-    .nav{
-      margin-top: 12px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
+    .header h1{margin:0;font-size:22px}
+    .header .sub{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .nav{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .btn{
-      border:1px solid var(--border);
-      background:#fff;
-      color:var(--text);
-      padding:10px 14px;
-      border-radius: 12px;
-      cursor:pointer;
-      font-size:15px;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, .05);
+      border:1px solid var(--border);background:#fff;color:var(--text);
+      padding:10px 14px;border-radius:12px;cursor:pointer;font-size:15px;
+      box-shadow:0 4px 10px rgba(15,23,42,.05);text-decoration:none;display:inline-flex;gap:8px;align-items:center
     }
     .btn:hover{background:var(--soft)}
-    .btn.primary{
-      border-color: rgba(15,122,58,.35);
-      background: rgba(15,122,58,.08);
-    }
-    .btn.green{
-      border-color: rgba(22,163,74,.35);
-      background: rgba(22,163,74,.10);
-    }
-    .btn.danger{
-      border-color: rgba(220,38,38,.35);
-      background: rgba(220,38,38,.06);
-      color:#7f1d1d;
-    }
+    .btn.primary{border-color:rgba(15,122,58,.35);background:rgba(15,122,58,.08)}
+    .btn.green{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.10)}
+    .btn.danger{border-color:rgba(220,38,38,.35);background:rgba(220,38,38,.06);color:#7f1d1d}
 
     .card{
-      margin-top: 14px;
-      border:1px solid var(--border);
-      border-left: 6px solid var(--green);
-      border-radius: var(--radius);
-      background:#fff;
-      box-shadow: var(--shadow);
-      padding: 16px;
+      margin-top:14px;border:1px solid var(--border);border-left:6px solid var(--green);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);padding:16px
     }
-    .card h2{margin:0 0 10px; font-size:18px}
-    .muted{color:var(--muted); font-size:14px}
-
-    label{display:block; margin-top:10px; color:var(--muted); font-size:14px}
-    input, select, textarea{
-      width:100%;
-      margin-top:6px;
-      padding:12px 12px;
-      border-radius: 12px;
-      border:1px solid var(--border);
-      background:#fff;
-      font-size:16px;
-      outline:none;
+    .card h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+    label{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+    input,select,textarea{
+      width:100%;margin-top:6px;padding:12px;border-radius:12px;
+      border:1px solid var(--border);background:#fff;font-size:16px;outline:none
     }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(15,122,58,.55);
-      box-shadow: 0 0 0 4px rgba(15,122,58,.10);
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(15,122,58,.55);box-shadow:0 0 0 4px rgba(15,122,58,.10)
     }
-    textarea{min-height:90px; resize:vertical}
-
-    .row{display:flex; gap:10px; flex-wrap:wrap}
-    .col{flex:1; min-width:240px}
+    textarea{min-height:90px;resize:vertical}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .col{flex:1;min-width:240px}
 
     .notice{
-      margin-top: 10px;
-      background: #f0fdf4;
-      border:1px dashed rgba(22,163,74,.45);
-      color:#14532d;
-      border-radius: 12px;
-      padding:10px 12px;
-      font-size:14px;
+      margin-top:10px;background:#f0fdf4;border:1px dashed rgba(22,163,74,.45);
+      color:#14532d;border-radius:12px;padding:10px 12px;font-size:14px
     }
+    .pill{
+      display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;
+      border:1px solid rgba(15,122,58,.25);background:rgba(15,122,58,.06);color:#14532d;margin-inline-start:6px
+    }
+    .hr{height:1px;background:var(--border);margin:12px 0}
 
     /* Rubric */
-    .rubric{display:grid; gap:10px; margin-top:12px}
-    .crit{
-      border:1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      background: #fff;
-    }
-    .critHead{
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
+    .rubric{display:grid;gap:10px;margin-top:12px}
+    .crit{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
+    .critHead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
     .critName{font-weight:700}
-    .levels{
-      margin-top:10px;
-      display:grid;
-      gap:10px;
-    }
-    @media(min-width:760px){ .levels{grid-template-columns: repeat(4, 1fr)} }
+    .levels{margin-top:10px;display:grid;gap:10px}
+    @media(min-width:760px){.levels{grid-template-columns:repeat(4,1fr)}}
     .lvl{
-      border:1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px;
-      background:#fff;
-      cursor:pointer;
-      user-select:none;
-      min-height:78px;
-      display:flex; flex-direction:column; gap:6px;
+      border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff;
+      cursor:pointer;user-select:none;min-height:78px;display:flex;flex-direction:column;gap:6px
     }
     .lvl b{font-size:14px}
-    .lvl span{font-size:12px; color:var(--muted)}
+    .lvl span{font-size:12px;color:var(--muted)}
     .lvl.active{
-      border-color: rgba(22,163,74,.70);
-      background: rgba(22,163,74,.08);
-      box-shadow: 0 0 0 4px rgba(22,163,74,.10);
+      border-color:rgba(22,163,74,.70);background:rgba(22,163,74,.08);
+      box-shadow:0 0 0 4px rgba(22,163,74,.10)
     }
 
-    /* Table list */
-    .tools{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;
-    }
-    .search{
-      flex:1; min-width:220px;
-    }
-    .list{
-      margin-top: 12px;
-      display:grid; gap:10px;
-    }
-    .item{
-      border:1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      background:#fff;
-    }
-    .itemTop{
-      display:flex; justify-content:space-between; align-items:flex-start;
-      gap:10px; flex-wrap:wrap;
-    }
+    /* list */
+    .tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .search{flex:1;min-width:220px}
+    .list{margin-top:12px;display:grid;gap:10px}
+    .item{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fff}
+    .itemTop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
     .itemTitle{font-weight:800}
-    .itemMeta{color:var(--muted); font-size:13px; margin-top:4px}
-    .itemBtns{display:flex; gap:8px; flex-wrap:wrap}
-    .pill{
-      display:inline-block;
-      padding:2px 10px;
-      border-radius:999px;
-      font-size:12px;
-      border:1px solid rgba(15,122,58,.25);
-      background: rgba(15,122,58,.06);
-      color:#14532d;
-      margin-inline-start:6px;
-    }
-    .hr{height:1px; background:var(--border); margin:12px 0}
+    .itemMeta{color:var(--muted);font-size:13px;margin-top:4px}
+    .itemBtns{display:flex;gap:8px;flex-wrap:wrap}
 
     @media print{
-      .nav, .itemBtns, .tools {display:none !important}
+      .nav,.itemBtns,.tools,.openLinks{display:none!important}
       body{background:#fff}
-      .card, .header{box-shadow:none}
+      .card,.header{box-shadow:none}
+      .lvl{background:#fff}
     }
   </style>
 </head>
@@ -203,7 +104,6 @@
     <div class="header">
       <h1>منصة التقويم لمادة العلوم</h1>
       <div class="sub">إعداد المعلمة بدرية محمد الزهراني</div>
-
       <div class="nav">
         <button class="btn primary" id="goForm">📝 بطاقة الملاحظة</button>
         <button class="btn" id="goList">📚 استعراض البطاقات</button>
@@ -215,34 +115,52 @@
   </div>
 
 <script>
-  // ===== إعدادات عامة =====
-  const LS_GRADE = "science_obs_grade_v1";
-  const LS_OBS   = "science_observations_v2";
+  // روابط الصفوف (Canva)
+  const CANVA = {
+    4: "https://36primery-school.my.canva.site/dahajdyfjhk",
+    5: "https://36primery-school.my.canva.site/dahajeso-mu",
+    6: "https://36primery-school.my.canva.site/dahairgwces"
+  };
 
-  // سلالم التقدير (4 مستويات) - يمكنك تعديل النصوص
+  const LS_GRADE = "science_obs_grade_v2";
+  const LS_OBS   = "science_observations_v3";
+
   const RUBRIC = [
-    { key:"objective", name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن"] },
-    { key:"engage",    name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
-    { key:"strategy",  name:"استراتيجيات التدريس", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
-    { key:"assessment",name:"التقويم والتغذية الراجعة", desc:["لا يوجد", "محدود", "مستمر", "مستمر + فاعل"] },
-    { key:"classroom", name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
+    { key:"objective",  name:"وضوح الهدف", desc:["غير واضح", "واضح جزئيًا", "واضح", "واضح ومُعلن"] },
+    { key:"engage",     name:"تفاعل الطالبات", desc:["ضعيف", "متوسط", "جيد", "عالٍ ومتنوع"] },
+    { key:"strategy",   name:"استراتيجيات التدريس", desc:["غير مناسبة", "محدودة", "مناسبة", "مناسبة + تمايز"] },
+    { key:"assessment", name:"التقويم والتغذية الراجعة", desc:["لا يوجد", "محدود", "مستمر", "مستمر + فاعل"] },
+    { key:"classroom",  name:"إدارة الصف", desc:["تحتاج دعم", "مقبولة", "جيدة", "متميزة"] },
   ];
 
+  const view = document.getElementById("view");
   function esc(s){ return (s??"").toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
   function nowISO(){ return new Date().toISOString(); }
   function uid(){ return (crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
-
   function loadObs(){ return JSON.parse(localStorage.getItem(LS_OBS) || "[]"); }
   function saveObs(list){ localStorage.setItem(LS_OBS, JSON.stringify(list)); }
-
   function getToday(){
-    const t = new Date();
-    const y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
+    const t=new Date(); const y=t.getFullYear(), m=String(t.getMonth()+1).padStart(2,'0'), d=String(t.getDate()).padStart(2,'0');
     return `${y}-${m}-${d}`;
   }
+  function scoreOf(rec){ return RUBRIC.reduce((acc,c)=> acc + (rec.levels?.[c.key]||0), 0); }
+  function maxScore(){ return RUBRIC.length * 4; }
 
-  // ===== واجهات العرض =====
-  const view = document.getElementById("view");
+  function openLinksBlock(grade){
+    const url = CANVA[grade];
+    const gtxt = grade ? `الصف ${grade}` : "اختاري الصف أولاً";
+    return `
+      <div class="notice openLinks">
+        <b>روابط التقويم (${esc(gtxt)})</b><br>
+        ${grade ? `
+          <a class="btn green" href="${esc(url)}" target="_blank" rel="noopener noreferrer">🔗 فتح تقويم الصف ${esc(grade)} (Canva)</a>
+          <div class="muted" style="margin-top:6px">يفتح في تبويب جديد لضمان عمل الرابط.</div>
+        ` : `
+          <div class="muted">بعد اختيار الصف سيظهر زر فتح تقويم الصف.</div>
+        `}
+      </div>
+    `;
+  }
 
   function renderForm(editId=null){
     const gradeSaved = localStorage.getItem(LS_GRADE) || "";
@@ -262,23 +180,22 @@
       levels: {}
     };
 
-    // بناء rubric HTML
     const rubricHtml = RUBRIC.map((c, idx)=>{
       const picked = v.levels?.[c.key] || 0;
-      const levelBoxes = [1,2,3,4].map(lvl=>`
-        <div class="lvl ${picked===lvl ? "active" : ""}" data-crit="${esc(c.key)}" data-lvl="${lvl}">
-          <b>مستوى ${lvl}</b>
-          <span>${esc(c.desc[lvl-1])}</span>
-        </div>
-      `).join("");
-
       return `
         <div class="crit">
           <div class="critHead">
             <div class="critName">${idx+1}) ${esc(c.name)}</div>
             <div class="muted">اختاري مستوى واحد</div>
           </div>
-          <div class="levels">${levelBoxes}</div>
+          <div class="levels">
+            ${[1,2,3,4].map(lvl=>`
+              <div class="lvl ${picked===lvl ? "active":""}" data-crit="${esc(c.key)}" data-lvl="${lvl}">
+                <b>مستوى ${lvl}</b>
+                <span>${esc(c.desc[lvl-1])}</span>
+              </div>
+            `).join("")}
+          </div>
         </div>
       `;
     }).join("");
@@ -286,9 +203,6 @@
     view.innerHTML = `
       <div class="card">
         <h2>📝 بطاقة الملاحظة ${editId ? '<span class="pill">تعديل</span>' : ""}</h2>
-        <div class="notice">
-          يتم حفظ البطاقات على هذا الجهاز. يمكنك الرجوع لها وتعديلها في أي وقت من "استعراض البطاقات".
-        </div>
 
         <div class="row">
           <div class="col">
@@ -305,6 +219,8 @@
             <input id="date" type="date" value="${esc(v.date)}" />
           </div>
         </div>
+
+        <div id="linksHere">${openLinksBlock(v.grade || "")}</div>
 
         <div class="row">
           <div class="col">
@@ -339,36 +255,38 @@
         <div class="tools">
           <button class="btn green" id="saveBtn">💾 ${editId ? "تحديث البطاقة" : "حفظ البطاقة"}</button>
           <button class="btn" id="newBtn">➕ بطاقة جديدة</button>
-          <button class="btn" id="printBtn">🖨️ طباعة</button>
           <button class="btn" id="listBtn">📚 استعراض البطاقات</button>
+          <button class="btn" id="printBtn">🖨️ طباعة</button>
         </div>
 
-        <div class="muted" style="margin-top:10px">
-          * لا يوجد اسم طالبة هنا حسب طلبك. الإدخال يبدأ باختيار الصف ثم تعبئة البطاقة.
+        <div class="notice">
+          ✔️ التقييم يتم بعد فتح رابط الصف ثم تعبئة البطاقة للدرس/الصف.<br>
+          * لا يوجد اسم طالبة حسب طلبك.
         </div>
       </div>
     `;
 
-    // ضبط اختيار الصف
+    // Grade
     const gradeSel = document.getElementById("grade");
     gradeSel.value = v.grade || "";
-    gradeSel.onchange = () => localStorage.setItem(LS_GRADE, gradeSel.value);
+    gradeSel.onchange = () => {
+      localStorage.setItem(LS_GRADE, gradeSel.value);
+      document.getElementById("linksHere").innerHTML = openLinksBlock(gradeSel.value);
+    };
 
-    // تفعيل rubric اختيار
+    // rubric interactions
     const levels = {...(v.levels || {})};
     document.querySelectorAll(".lvl").forEach(box=>{
       box.addEventListener("click", ()=>{
         const crit = box.getAttribute("data-crit");
         const lvl  = Number(box.getAttribute("data-lvl"));
         levels[crit] = lvl;
-
-        // إطفاء باقي نفس المعيار
         document.querySelectorAll(`.lvl[data-crit="${crit}"]`).forEach(x=>x.classList.remove("active"));
         box.classList.add("active");
       });
     });
 
-    // حفظ/تحديث
+    // save/update
     document.getElementById("saveBtn").onclick = () => {
       const grade = gradeSel.value;
       const date  = (document.getElementById("date").value || "").trim();
@@ -377,11 +295,9 @@
       const teacherObserved = (document.getElementById("teacherObserved").value || "").trim();
       const notes = (document.getElementById("notes").value || "").trim();
 
-      const pickedCount = Object.keys(levels).length;
-
       if(!grade){ alert("فضلاً اختاري الصف الدراسي."); return; }
       if(!lessonTitle){ alert("فضلاً اكتبي عنوان الدرس."); return; }
-      if(pickedCount < 3){ alert("فضلاً اختاري سلالم التقدير (على الأقل 3 معايير)."); return; }
+      if(Object.keys(levels).length < 3){ alert("اختاري سلالم التقدير (على الأقل 3 معايير)."); return; }
 
       const list = loadObs();
       const record = {
@@ -398,30 +314,23 @@
 
       saveObs(list);
       alert(idx>=0 ? "تم تحديث البطاقة ✅" : "تم حفظ البطاقة ✅");
-      renderList(); // بعد الحفظ نعرض القائمة
+      renderList();
     };
 
     document.getElementById("newBtn").onclick = ()=> renderForm(null);
-    document.getElementById("printBtn").onclick = ()=> window.print();
     document.getElementById("listBtn").onclick = ()=> renderList();
+    document.getElementById("printBtn").onclick = ()=> window.print();
   }
-
-  function scoreOf(rec){
-    return RUBRIC.reduce((acc,c)=> acc + (rec.levels?.[c.key] || 0), 0);
-  }
-  function maxScore(){ return RUBRIC.length * 4; }
 
   function renderList(){
     const list = loadObs();
     view.innerHTML = `
       <div class="card">
         <h2>📚 استعراض بطاقات الملاحظة</h2>
-        <div class="notice">
-          يمكنك البحث بالصف أو عنوان الدرس، ثم فتح بطاقة للتعديل أو الطباعة.
-        </div>
+        <div class="notice">يمكنك فتح رابط الصف من داخل بطاقة التعديل/الإنشاء، ثم تحديث التقييم حسب الدرس.</div>
 
         <div class="tools">
-          <input id="q" class="search" placeholder="بحث: مثال (خامس) أو (حالات المادة)..." />
+          <input id="q" class="search" placeholder="بحث: مثال (4) أو (حالات المادة)..." />
           <button class="btn green" id="newCardBtn">➕ بطاقة جديدة</button>
           <button class="btn" id="printBtn">🖨️ طباعة</button>
         </div>
@@ -434,11 +343,11 @@
     const box = document.getElementById("listBox");
     const count = document.getElementById("count");
 
-    function draw(filtered){
-      if(!filtered.length){
+    function draw(arr){
+      if(!arr.length){
         box.innerHTML = `<div class="notice">لا توجد بطاقات مطابقة.</div>`;
       } else {
-        box.innerHTML = filtered.map(rec=>{
+        box.innerHTML = arr.map(rec=>{
           const when = new Date(rec.updatedAt || rec.createdAt).toLocaleString("ar-SA");
           const sc = scoreOf(rec);
           return `
@@ -453,7 +362,7 @@
                 </div>
                 <div class="itemBtns">
                   <button class="btn primary" data-edit="${esc(rec.id)}">✏️ تعديل</button>
-                  <button class="btn" data-view="${esc(rec.id)}">👁️ عرض</button>
+                  <a class="btn green" href="${esc(CANVA[rec.grade])}" target="_blank" rel="noopener noreferrer">🔗 فتح تقويم الصف</a>
                   <button class="btn danger" data-del="${esc(rec.id)}">🗑️ حذف</button>
                 </div>
               </div>
@@ -465,21 +374,16 @@
           `;
         }).join("");
       }
-      count.textContent = String(filtered.length);
+      count.textContent = String(arr.length);
 
-      // أزرار
       box.querySelectorAll("[data-edit]").forEach(b=>{
         b.onclick = ()=> renderForm(b.getAttribute("data-edit"));
-      });
-      box.querySelectorAll("[data-view]").forEach(b=>{
-        b.onclick = ()=> renderReadOnly(b.getAttribute("data-view"));
       });
       box.querySelectorAll("[data-del]").forEach(b=>{
         b.onclick = ()=>{
           const id = b.getAttribute("data-del");
           if(!confirm("تأكيد حذف البطاقة؟")) return;
-          const next = loadObs().filter(x=>x.id!==id);
-          saveObs(next);
+          saveObs(loadObs().filter(x=>x.id!==id));
           draw(filterList(document.getElementById("q").value || ""));
         };
       });
@@ -489,7 +393,7 @@
       q = (q||"").trim().toLowerCase();
       if(!q) return list;
       return list.filter(r=>{
-        const g = ("صف " + (r.grade||"")).toLowerCase();
+        const g = String(r.grade||"").toLowerCase();
         const t = (r.lessonTitle||"").toLowerCase();
         const o = (r.observerName||"").toLowerCase();
         return g.includes(q) || t.includes(q) || o.includes(q);
@@ -503,76 +407,7 @@
     draw(list);
   }
 
-  function renderReadOnly(id){
-    const list = loadObs();
-    const rec = list.find(x=>x.id===id);
-    if(!rec){ renderList(); return; }
-
-    const when = new Date(rec.updatedAt || rec.createdAt).toLocaleString("ar-SA");
-    const rubricRows = RUBRIC.map(c=>{
-      const lvl = rec.levels?.[c.key] || 0;
-      const txt = lvl ? c.desc[lvl-1] : "—";
-      return `
-        <div class="crit">
-          <div class="critHead">
-            <div class="critName">${esc(c.name)}</div>
-            <div class="muted">المستوى: <b>${lvl || "—"}</b> — ${esc(txt)}</div>
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    view.innerHTML = `
-      <div class="card">
-        <h2>👁️ عرض البطاقة</h2>
-        <div class="notice">
-          الصف ${esc(rec.grade)} — ${esc(rec.lessonTitle)} — آخر تحديث: ${esc(when)}
-          <span class="pill">المجموع ${scoreOf(rec)}/${maxScore()}</span>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <label>التاريخ</label>
-            <input value="${esc(rec.date||"")}" disabled />
-          </div>
-          <div class="col">
-            <label>الملاحِظة</label>
-            <input value="${esc(rec.observerName||"")}" disabled />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <label>المعلمة المُلاحظة</label>
-            <input value="${esc(rec.teacherObserved||"")}" disabled />
-          </div>
-          <div class="col">
-            <label>عنوان الدرس</label>
-            <input value="${esc(rec.lessonTitle||"")}" disabled />
-          </div>
-        </div>
-
-        <div class="hr"></div>
-        <h2 style="font-size:16px;margin:0 0 6px">سلالم التقدير</h2>
-        <div class="rubric">${rubricRows}</div>
-
-        <label>الملاحظات</label>
-        <textarea disabled>${esc(rec.notes||"")}</textarea>
-
-        <div class="tools">
-          <button class="btn primary" id="editBtn">✏️ تعديل</button>
-          <button class="btn" id="listBtn">📚 رجوع للقائمة</button>
-          <button class="btn" id="printBtn">🖨️ طباعة</button>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("editBtn").onclick = ()=> renderForm(id);
-    document.getElementById("listBtn").onclick = ()=> renderList();
-    document.getElementById("printBtn").onclick = ()=> window.print();
-  }
-
-  // ===== شريط علوي =====
+  // شريط علوي
   document.getElementById("goForm").onclick = ()=> renderForm(null);
   document.getElementById("goList").onclick = ()=> renderList();
   document.getElementById("clearLocal").onclick = ()=>{
@@ -583,7 +418,7 @@
     }
   };
 
-  // ===== تشغيل افتراضي =====
+  // تشغيل
   renderForm(null);
 </script>
 
